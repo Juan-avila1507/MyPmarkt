@@ -4,7 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPmarkt</title>
+     <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: transparent;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .dividor-contenedor{
+            max-width: 10000px;
+            margin:0 auto;
+        }
+        .espacio-izquierda{
+            width:35%;
+        }
+        .espacio-logo{
+            width: 100px;
+            height: 40px;
+            background-color: transparent;
+        }
+        .logo-espacio {
+            margin-left: 20px; 
+            display: flex;
+            align-items: center;
+        }
+        .titulo-bloque {
+            background-color: #073B5C;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 8px solid #4CAF50;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin: 20px auto 5px auto;
+            max-width: 80%;
+        }
+        .logo-container img {
+            height: 60px;
+            width: 60px;
+            border-radius: 8px;
+            background-color: white;
+            padding: 5px;
+        }
+        .titulo-con-estrellas {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-grow: 1;
+            justify-content: center;
+        }       
+    
+        .titulo-texto {
+            font-weight: 700;
+            font-size: 28px;
+            color: white;
+        }
+        .estrella {
+            font-size: 26px;
+            color: #FFB400;
+        }
+        .menu-botones {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: 10px;
+            background-color:transparent;
+            background-position: 80%;
+            
+        }
+        .menu-botones button {
+            padding: 9px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-botones button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+    
 </head>
+<body>
+    <header>
+        <div class="dividor-contenedor">
+        <div class="titulo-bloque">
+            <div class="logo-container">
+              <img src="logo.jpg" alt="Logo MyPmarkt">
+            </div>
+            <div class="titulo-con-estrellas">
+              <span class="estrella">★</span>
+              <span class="titulo-texto">MyPmarkt</span>
+              <span class="estrella">★</span>
+            </div>
+          </div>
+        <div class="menu-botones">
+            <button>Inicio</button>
+            <button>Información</button>
+            <button>Aliados</button>
+            <button>Contáctanos</button>
+          </div>
+        </div>
+    </header> 
+
 <body>
     <h1>MYPMARKT</h1>   
 
