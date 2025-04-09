@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPmarkt</title>
-     <style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             margin: 0;
             font-family: sans-serif;
@@ -16,22 +19,9 @@
             background-color: transparent;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .dividor-contenedor{
+        .dividor-contenedor {
             max-width: 10000px;
-            margin:0 auto;
-        }
-        .espacio-izquierda{
-            width:35%;
-        }
-        .espacio-logo{
-            width: 100px;
-            height: 40px;
-            background-color: transparent;
-        }
-        .logo-espacio {
-            margin-left: 20px; 
-            display: flex;
-            align-items: center;
+            margin: 0 auto;
         }
         .titulo-bloque {
             background-color: #073B5C;
@@ -58,8 +48,7 @@
             gap: 12px;
             flex-grow: 1;
             justify-content: center;
-        }       
-    
+        }
         .titulo-texto {
             font-weight: 700;
             font-size: 28px;
@@ -75,9 +64,7 @@
             gap: 20px;
             flex-wrap: wrap;
             padding-bottom: 10px;
-            background-color:transparent;
-            background-position: 80%;
-            
+            background-color: transparent;
         }
         .menu-botones button {
             padding: 9px 15px;
@@ -89,87 +76,144 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .menu-botones button:hover {
             background-color: #45a049;
         }
-
+        .cuadro-bienvenida {
+            background-color: #073B5C;
+            padding: 15px 30px;
+            display: flex;
+            border-radius: 10px;
+            align-items: center; 
+            justify-content: space-between;
+            gap: 50px;
+            border-left: 8px solid #45a049;
+        }
+        .texto1-cuadro-bienvenida {
+            font-weight: 700;
+            font-size: 28px;
+            color: white;
+        }
+        .texto2-cuadro-bienvenida {
+            font-weight: 350;
+            font-size: 20px;
+            color: white;
+        }
+        .slider-imagenes {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 30px;
+            border-radius: 10px;
+        }
+        .slider-imagenes img {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, border-color 0.3s;
+            border: 3px solid transparent;
+        }
+        .slider-imagenes img:hover {
+            transform: scale(1.05);
+            border-color: #073B5C;
+        }
+        .carrusel-fotos {
+            background-color: #45a049;
+            padding: 15px 30px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+        section {
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+        }
+        section h2 {
+            color: #073B5C;
+        }
     </style>
-    
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </head>
 <body>
     <header>
         <div class="dividor-contenedor">
-        <div class="titulo-bloque">
-            <div class="logo-container">
-              <img src="logo.jpg" alt="Logo MyPmarkt">
+            <div class="titulo-bloque">
+                <div class="logo-container">
+                    <img src="logo.jpg" alt="Logo MyPmarkt">
+                </div>
+                <div class="titulo-con-estrellas">
+                    <span class="estrella">★</span>
+                    <span class="titulo-texto">MyPmarkt</span>
+                    <span class="estrella">★</span>
+                </div>
             </div>
-            <div class="titulo-con-estrellas">
-              <span class="estrella">★</span>
-              <span class="titulo-texto">MyPmarkt</span>
-              <span class="estrella">★</span>
+            <div class="menu-botones">
+                <button onclick="scrollToSection('inicio')">Inicio</button>
+                <button onclick="scrollToSection('informacion')">Información</button>
+                <button onclick="scrollToSection('aliados')">Aliados</button>
+                <button onclick="scrollToSection('contacto')">Contáctanos</button>
             </div>
-          </div>
-        <div class="menu-botones">
-            <button>Inicio</button>
-            <button>Información</button>
-            <button>Aliados</button>
-            <button>Contáctanos</button>
-          </div>
         </div>
-    </header> 
+    </header>
 
-<body>
+    <section id="inicio">
+        <div class="cuadro-bienvenida">
+            <div class="texto1-cuadro-bienvenida">
+                <h2>Bienvenido a MyPmarkt</h2>
+            </div>
+            <div class="texto2-cuadro-bienvenida">
+                <p>Una herramienta pensada para ayudarte a tomar decisiones más inteligentes al momento de hacer tus compras...</p>
+            </div>
+        </div>
+        <div class="carrusel-fotos">
+            <div class="slider-imagenes">
+                <img src="Elegir.jpg" alt="Imagen 1">
+                <img src="precios.jpg" alt="Imagen 2">
+                <img src="Super.jpg" alt="Imagen 3">
+                <img src="l2.jpg" alt="Imagen 4">
+            </div>
+        </div>
+    </section>
 
-    <hr>
-    <h2>Bienvenido a MyPmarkt</h2>
-    <div>Una herramienta pensada para ayudarte a tomar decisiones más inteligentes al momento de hacer tus compras. Ante el constante aumento en los precios de la canasta familiar en Colombia, desarrollamos una aplicación móvil que te permitirá comparar precios en diferentes supermercados y tiendas, todo desde la comodidad de tu celular.</div>
-    <hr> 
-    <h2>Planteamiento del Problema</h2>
-    <div>Uno de los principales problemas que enfrentan los colombianos actualmente es el alto costo de la canasta familiar, lo que obliga a muchas familias a priorizar ciertos productos sobre otros. En 2024, el valor de esta canasta osciló entre $800.000 y $1.000.000, lo que representa hasta el 77% del salario mínimo mensual, limitando seriamente la capacidad de cubrir otros gastos esenciales como servicios, transporte y vivienda.
-
-        Este impacto es más fuerte en los hogares de ingresos bajos y medios, especialmente considerando que el 42,5% de los hogares colombianos viven con menos de dos salarios mínimos. A esto se suma la falta de herramientas eficientes para comparar precios, lo que obliga a recorrer varios establecimientos o confiar en publicidad poco confiable, generando pérdida de tiempo y dinero.
-        
-        La inflación y el aumento de precios en productos básicos continúan afectando el poder adquisitivo de los colombianos. En este contexto, es fundamental contar con una solución que brinde acceso rápido y confiable a información actualizada sobre precios en distintos puntos de venta.</div>
-    <hr>
-    <h2>Objetivos del Proyecto</h2>
-    <h4>OBJETIVO GENERAL:</h4> 
-    <ul>
-    <li> <div>Desarrollar un prototipo de aplicación móvil que facilite la comparación de precios de productos de uso diario, incluyendo los de la canasta básica y del hogar, en distintas cadenas de supermercados y tiendas. La aplicación integrará Big Data, geolocalización y medidas de seguridad para proteger los datos del usuario. Además, permitirá ahorrar tiempo y dinero, impulsará la competencia entre comercios y promoverá la sostenibilidad mediante el apoyo a compras locales.</div> 
-    </li> </ul>
-    <h4>OBJETIVOS ESPECIFICOS:</h4> 
-    <ul>
-    <li> <div>Identificar y segmentar el público objetivo según nivel socioeconómico, ubicación y hábitos de compra, para ofrecer una experiencia personalizada.</div> 
-    </li> 
-    <li> <div>Diseñar una interfaz intuitiva que permita comparar precios en diferentes tiendas, recibir alertas de descuentos y encontrar las mejores ofertas cercanas mediante geolocalización.
-
-    </div> 
-    </li></ul>
-
-    <hr>
-    <h2>Nuestra Solución</h2>
-    <div>Nuestra aplicación será una herramienta integral que permitirá a los usuarios:
+    <section id="informacion">
+        <h2>Planteamiento del Problema</h2>
+        <p>Uno de los principales problemas que enfrentan los colombianos actualmente es el alto costo de la canasta familiar...</p>
+        <h2>Objetivos del Proyecto</h2>
+        <h4>Objetivo General</h4>
+        <p>Desarrollar un prototipo de aplicación móvil que facilite la comparación de precios de productos de uso diario...</p>
+        <h4>Objetivos Específicos</h4>
         <ul>
-            <li>Comparar precios de productos de la canasta familiar en tiempo real.</li>
-            <li>Ubicar los comercios más cercanos con los mejores precios gracias a la geolocalización. </li>
-            <li>Recibir alertas sobre descuentos y rebajas. </li>
-            <li>Leer y dejar opiniones sobre los establecimientos. </li>
-            <li>Planificar rutas de compra para optimizar tiempo y transporte. </li>
+            <li>Identificar y segmentar el público objetivo...</li>
+            <li>Diseñar una interfaz intuitiva...</li>
         </ul>
-        
-        Todo esto en una interfaz fácil de usar, segura y orientada a maximizar el ahorro.</div>
-    <hr>
-    <h2>Impacto Esperado</h2>
-    <div>Esta herramienta no solo busca beneficiar a los consumidores, sino también fomentar la transparencia en los precios, incentivar una competencia más justa entre comercios y generar conciencia sobre el consumo local. Al empoderar a los usuarios con información actualizada, contribuimos a mejorar su economía doméstica y a reducir la incertidumbre en el gasto alimentario.</div>
-    <hr> 
-    <h2>Sobre el proyecto</h2>
-    <div>Este proyecto está siendo desarrollado por estudiantes de Ingeniería de Sistemas con enfoque en soluciones tecnológicas para problemas sociales reales. Nuestra visión es crear una app que marque una diferencia tangible en la vida de los colombianos.</div>
-    <hr> 
-    
-    <h1>¡CONTACTANOS!</h1>
-    <a href="https://github.com/">GITHUB: https://github.com/Juan-avila1507/MyPmarkt </a>
-    <hr>
-    <a href="contacto.html"> Ir a Pagina Contacto(subpagina)</a>
+        <h2>Nuestra Solución</h2>
+        <ul>
+            <li>Comparar precios en tiempo real...</li>
+            <li>Ubicar comercios cercanos con mejores precios...</li>
+        </ul>
+        <h2>Impacto Esperado</h2>
+        <p>Esta herramienta busca beneficiar a los consumidores y fomentar la transparencia en precios...</p>
+        <h2>Sobre el Proyecto</h2>
+        <p>Este proyecto está siendo desarrollado por estudiantes de Ingeniería de Sistemas...</p>
+    </section>
 
+    <section id="aliados">
+        <h2>Aliados</h2>
+        <p>(Próximamente)</p>
+    </section>
+
+    <section id="contacto">
+        <h2>¡Contáctanos!</h2>
+        <p><a href="https://github.com/">GitHub: https://github.com/Juan-avila1507/MyPmarkt</a></p>
+        <p><a href="contacto.html">Ir a Página de Contacto (subpágina)</a></p>
+    </section>
 </body>
 </html>
+
