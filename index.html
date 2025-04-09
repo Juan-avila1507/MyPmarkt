@@ -81,14 +81,15 @@
         }
         .cuadro-bienvenida {
             background-color: #073B5C;
-            padding: 15px 30px;
+            padding: 20px 30px;
             display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
             border-radius: 10px;
-            align-items: center; 
-            justify-content: space-between;
-            gap: 50px;
             border-left: 8px solid #45a049;
-        }
+}
+
         .texto1-cuadro-bienvenida {
             font-weight: 700;
             font-size: 28px;
@@ -96,7 +97,7 @@
         }
         .texto2-cuadro-bienvenida {
             font-weight: 350;
-            font-size: 20px;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             color: white;
         }
         .slider-imagenes {
@@ -133,6 +134,35 @@
         }
         section h2 {
             color: #073B5C;
+        }
+        .cuadro-informativo{
+            background-color: #073B5C;
+            padding: 20px 30px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
+            border-radius: 10px;
+            border-left: 8px solid #45a049;
+
+        }
+        .texto1-cuadro-informativo {
+            font-weight: 600;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: white;
+        }
+        .texto2-cuadro-informativo {
+            font-weight: 300;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: white;
+        }
+        .texto1-cuadro-informativo,.texto2-cuadro-informativo {
+            color: white;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+        .texto1-cuadro-bienvenida,.texto2-cuadro-bienvenida {
+            flex: 1;
+            min-width: 250px;
         }
     </style>
     <script>
@@ -183,25 +213,41 @@
     </section>
 
     <section id="informacion">
-        <h2>Planteamiento del Problema</h2>
-        <p>Uno de los principales problemas que enfrentan los colombianos actualmente es el alto costo de la canasta familiar...</p>
-        <h2>Objetivos del Proyecto</h2>
-        <h4>Objetivo General</h4>
-        <p>Desarrollar un prototipo de aplicación móvil que facilite la comparación de precios de productos de uso diario...</p>
+        <div class="cuadro-informativo">
+
+        <div class="texto1-cuadro-informativo">Planteamiento del Problema</div>
+        <div class="texto2-cuadro-informativo"><p>Uno de los principales problemas que enfrentan los colombianos actualmente es el alto costo de la canasta familiar.</p></div>
+        <div class="texto1-cuadro-informativo">Objetivos del Proyecto</div>
+        <div class="texto2-cuadro-informativo"><h4>Objetivo General</h4>
+        <p>Desarrollar un prototipo de aplicación móvil que facilite la comparación de precios de productos de uso diario.</p>
         <h4>Objetivos Específicos</h4>
         <ul>
-            <li>Identificar y segmentar el público objetivo...</li>
-            <li>Diseñar una interfaz intuitiva...</li>
+            <li>Identificar y segmentar el público objetivo.</li>
+            <li>Diseñar una interfaz intuitiva.</li>
         </ul>
-        <h2>Nuestra Solución</h2>
+        </div>
+        <div class="texto1-cuadro-informativo">
+        Nuestra Solución
+        </div>
+        <div class="texto2-cuadro-informativo">
         <ul>
-            <li>Comparar precios en tiempo real...</li>
-            <li>Ubicar comercios cercanos con mejores precios...</li>
+            <li>Comparar precios en tiempo real.</li>
+            <li>Ubicar comercios cercanos con mejores precios.</li>
         </ul>
-        <h2>Impacto Esperado</h2>
-        <p>Esta herramienta busca beneficiar a los consumidores y fomentar la transparencia en precios...</p>
-        <h2>Sobre el Proyecto</h2>
-        <p>Este proyecto está siendo desarrollado por estudiantes de Ingeniería de Sistemas...</p>
+        </div>
+        <div class="texto1-cuadro-informativo">
+        Impacto Esperado
+        </div>
+        <div class="texto2-cuadro-informativo">
+        <p>Esta herramienta busca beneficiar a los consumidores y fomentar la transparencia en precios.</p>
+        </div>
+        <div class="texto1-cuadro-informativo">
+        Sobre el Proyecto
+        </div>
+        <div class="texto2-cuadro-informativo">
+        <p>Este proyecto está siendo desarrollado por estudiantes de Ingeniería de Sistemas.</p>
+        </div>
+        </div>
     </section>
 
     <section id="aliados">
