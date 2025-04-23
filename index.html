@@ -5,171 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Market</title>
     <link rel="icon" type="image/png" href="logo_pequeño.png">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            margin: 0;
-            font-family: sans-serif;
-        }
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: transparent;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .dividor-contenedor {
-            max-width: 10000px;
-            margin: 0 auto;
-        }
-        .titulo-bloque {
-            background-color: #073B5C;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-left: 8px solid #4CAF50;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            margin: 20px auto 5px auto;
-            max-width: 80%;
-        }
-        .logo-container img {
-            height: 60px;
-            width: 60px;
-            border-radius: 8px;
-            
-        }
-        .titulo-con-estrellas {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-grow: 1;
-            justify-content: center;
-        }
-        .titulo-texto {
-            font-weight: 700;
-            font-size: 28px;
-            color: white;
-        }
-        .estrella {
-            font-size: 26px;
-            color: #FFB400;
-        }
-        .menu-botones {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding-bottom: 10px;
-            background-color: transparent;
-        }
-        .menu-botones button {
-            padding: 9px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .menu-botones button:hover {
-            background-color: #45a049;
-        }
-        .cuadro-bienvenida {
-            background-color: #073B5C;
-            padding: 20px 30px;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            gap: 20px;
-            border-radius: 10px;
-            border-left: 8px solid #45a049;
-}
-
-        .texto1-cuadro-bienvenida {
-            font-weight: 700;
-            font-size: 28px;
-            color: white;
-        }
-        .texto2-cuadro-bienvenida {
-            font-weight: 350;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            color: white;
-        }
-        .slider-imagenes {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 30px;
-            border-radius: 10px;
-        }
-        .slider-imagenes img {
-            flex: 0 0 auto;
-            width: 300px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s, border-color 0.3s;
-            border: 3px solid transparent;
-        }
-        .slider-imagenes img:hover {
-            transform: scale(1.05);
-            border-color: #073B5C;
-        }
-        .carrusel-fotos {
-            background-color: #45a049;
-            padding: 15px 30px;
-            margin-top: 15px;
-            border-radius: 10px;
-        }
-        section {
-            padding: 40px;
-            max-width: 900px;
-            margin: auto;
-        }
-        section h2 {
-            color: #073B5C;
-        }
-        .cuadro-informativo{
-            background-color: #073B5C;
-            padding: 20px 30px;
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            gap: 20px;
-            border-radius: 10px;
-            border-left: 8px solid #45a049;
-
-        }
-        .texto1-cuadro-informativo {
-            font-weight: 600;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            color: white;
-        }
-        .texto2-cuadro-informativo {
-            font-weight: 300;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            color: white;
-        }
-        .texto1-cuadro-informativo,.texto2-cuadro-informativo {
-            color: white;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-        }
-        .texto1-cuadro-bienvenida,.texto2-cuadro-bienvenida {
-            flex: 1;
-            min-width: 250px;
-        }
-    </style>
-    <script>
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -214,40 +50,37 @@
 
     <section id="informacion">
         <div class="cuadro-informativo">
-
-        <div class="texto1-cuadro-informativo">- El Problema </div>
-        <div class="texto2-cuadro-informativo"><p>En Colombia, llenar el mercado se ha vuelto cada vez más costoso. Muchas familias gastan hasta el 77% de su salario solo en alimentos. Y lo peor: no hay una forma sencilla de saber dónde están los mejores precios. La gente pierde tiempo y dinero recorriendo tiendas o confiando en publicidad que no siempre es real.</p></div>
-        <div class="texto1-cuadro-informativo">- ¿Qué buscamos?</div>
-        <div class="texto2-cuadro-informativo">
-        <p>Crear una app que te muestre dónde comprar más barato, usando geolocalización, datos actualizados y una interfaz sencilla.</p>
-        <p>Ademas queremos: </p>
-        <ul>
-            <li>Saber quién usará la app, para ajustarla a sus necesidades.</li>
-            <li>Diseñar algo bonito y fácil de usar.</li>
-            <li>Darte alertas de descuentos y ayudarte a ahorrar tiempo.</li>
-        </ul>
-        </div>
-        <div class="texto1-cuadro-informativo">
-        - Nuestra Solución
-        </div>
-        <div class="texto2-cuadro-informativo">
-        <p>Una app que te permite:</p>
-        <ul>
-            <li>Ver precios de productos en varias tiendas</li>
-            <li>Encontrar las mejores opciones cerca de ti</li>
-            <li>Recibir alertas de rebajas</li>
-            <li>Leer opiniones de otros compradores</li>
-            <li>Ahorrar tiempo con rutas inteligentes</li>
-        </ul>
-        </div>
-        <div class="texto1-cuadro-informativo">- Lo que lograremos</div>
-        <div class="texto2-cuadro-informativo">
-        <p>Con esta app vas a poder tomar mejores decisiones al comprar. Ahorrarás tiempo, plata y apoyarás al comercio local. Además, los negocios competirán más por ofrecer buenos precios.</p>
-        </div>
-        <div class="texto1-cuadro-informativo">- Sobre el Proyecto </div>
-        <div class="texto2-cuadro-informativo">
-        <p>Este es un prototipo creado por estudiantes de Ingeniería de Sistemas que quieren usar la tecnología para resolver problemas reales. ¡Vamos con toda!</p>
-        </div>
+            <div class="texto1-cuadro-informativo">- El Problema </div>
+            <div class="texto2-cuadro-informativo"><p>En Colombia, llenar el mercado se ha vuelto cada vez más costoso. Muchas familias gastan hasta el 77% de su salario solo en alimentos. Y lo peor: no hay una forma sencilla de saber dónde están los mejores precios. La gente pierde tiempo y dinero recorriendo tiendas o confiando en publicidad que no siempre es real.</p></div>
+            <div class="texto1-cuadro-informativo">- ¿Qué buscamos?</div>
+            <div class="texto2-cuadro-informativo">
+                <p>Crear una app que te muestre dónde comprar más barato, usando geolocalización, datos actualizados y una interfaz sencilla.</p>
+                <p>Ademas queremos: </p>
+                <ul>
+                    <li>Saber quién usará la app, para ajustarla a sus necesidades.</li>
+                    <li>Diseñar algo bonito y fácil de usar.</li>
+                    <li>Darte alertas de descuentos y ayudarte a ahorrar tiempo.</li>
+                </ul>
+            </div>
+            <div class="texto1-cuadro-informativo">- Nuestra Solución</div>
+            <div class="texto2-cuadro-informativo">
+                <p>Una app que te permite:</p>
+                <ul>
+                    <li>Ver precios de productos en varias tiendas</li>
+                    <li>Encontrar las mejores opciones cerca de ti</li>
+                    <li>Recibir alertas de rebajas</li>
+                    <li>Leer opiniones de otros compradores</li>
+                    <li>Ahorrar tiempo con rutas inteligentes</li>
+                </ul>
+            </div>
+            <div class="texto1-cuadro-informativo">- Lo que lograremos</div>
+            <div class="texto2-cuadro-informativo">
+                <p>Con esta app vas a poder tomar mejores decisiones al comprar. Ahorrarás tiempo, plata y apoyarás al comercio local. Además, los negocios competirán más por ofrecer buenos precios.</p>
+            </div>
+            <div class="texto1-cuadro-informativo">- Sobre el Proyecto </div>
+            <div class="texto2-cuadro-informativo">
+                <p>Este es un prototipo creado por estudiantes de Ingeniería de Sistemas que quieren usar la tecnología para resolver problemas reales. ¡Vamos con toda!</p>
+            </div>
         </div>
     </section>
 
@@ -259,10 +92,9 @@
     <section id="contacto">
         <h2>¡Contáctanos!</h2>
         <p>¿Te interesa el proyecto? ¿Tienes ideas o quieres apoyarlo?</p>
+        <p>GITHUB: <a href="https://github.com/Juan-avila1507/MyPmarkt">https://github.com/Juan-avila1507/MyPmarkt</a></p>
+        </section>
 
-        <p>GITHUB: <a href="https://github.com/">https://github.com/Juan-avila1507/MyPmarkt</a></p>
-        <p><a href="contacto.html"></a></p>
-    </section>
+    <script src="scripts.js"></script>
 </body>
 </html>
-

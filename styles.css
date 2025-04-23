@@ -1,0 +1,219 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: transparent; /* Asegúrate que el fondo del header no oculte contenido debajo al hacer scroll si es necesario, o añade un color sólido */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Añadir un color de fondo al header puede ser útil si el contenido pasa por debajo */
+    /* background-color: white;  */ /* Descomenta si prefieres un fondo sólido */
+}
+.dividor-contenedor {
+    max-width: 10000px; /* Considera si este valor tan grande es necesario, quizás 1200px o 1400px sea más común */
+    margin: 0 auto;
+}
+.titulo-bloque {
+    background-color: #073B5C;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 8px solid #4CAF50;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 20px auto 5px auto; /* Ajustado el margen inferior */
+    max-width: 80%;
+}
+.logo-container img {
+    height: 60px;
+    width: 60px;
+    border-radius: 8px;
+}
+.titulo-con-estrellas {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-grow: 1;
+    justify-content: center;
+}
+.titulo-texto {
+    font-weight: 700;
+    font-size: 28px;
+    color: white;
+}
+.estrella {
+    font-size: 26px;
+    color: #FFB400;
+}
+.menu-botones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    /* Este contenedor no necesita un background-color: transparent explícito si el header ya lo tiene o es el color por defecto */
+    /* background-color: transparent; */
+    /* Si quieres que los botones tengan un fondo propio bajo ellos, puedes añadirlo aquí */
+     background-color: #f8f8f8; /* Ejemplo de fondo claro para los botones */
+     padding-top: 5px; /* Añadir espacio arriba si es necesario */
+     border-bottom-left-radius: 10px; /* Opcional: redondear esquinas */
+     border-bottom-right-radius: 10px; /* Opcional: redondear esquinas */
+     max-width: 80%; /* Igual que el titulo-bloque */
+     margin: 0 auto 10px auto; /* Centrar y añadir margen inferior */
+
+}
+.menu-botones button {
+    padding: 9px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.menu-botones button:hover {
+    background-color: #45a049;
+}
+.cuadro-bienvenida {
+    background-color: #073B5C;
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap; /* Cambiado a wrap para mejor responsividad */
+    flex-direction: row; /* Cambiado a row para que los textos estén uno al lado del otro si caben */
+    gap: 20px;
+    border-radius: 10px;
+    border-left: 8px solid #45a049;
+}
+.texto1-cuadro-bienvenida {
+    font-weight: 700;
+    font-size: 28px; /* Puede ser demasiado grande en pantallas pequeñas, considera usar clamp */
+    color: white;
+    flex: 1; /* Permite que crezca */
+    min-width: 200px; /* Ancho mínimo */
+}
+.texto2-cuadro-bienvenida {
+    font-weight: 350;
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Buen uso de clamp */
+    color: white;
+    flex: 2; /* Permite que crezca más que el texto1 */
+    min-width: 300px; /* Ancho mínimo */
+}
+
+.slider-imagenes {
+    display: flex;
+    overflow-x: auto; /* Permite scroll horizontal */
+    gap: 20px;
+    padding: 20px 0px; /* Quitar padding lateral si el contenedor ya lo tiene */
+    border-radius: 10px; /* Este radius puede no ser visible si las imágenes lo tapan */
+    scrollbar-width: thin; /* Estilo opcional para la barra de scroll */
+    scrollbar-color: #073B5C #f0f0f0; /* Estilo opcional para la barra de scroll */
+}
+
+/* Webkit (Chrome, Safari) scrollbar styles */
+.slider-imagenes::-webkit-scrollbar {
+  height: 8px;
+}
+.slider-imagenes::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+.slider-imagenes::-webkit-scrollbar-thumb {
+  background-color: #073B5C;
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+.slider-imagenes img {
+    flex: 0 0 auto; /* No crecer, no encoger, base automática */
+    width: 300px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, border-color 0.3s;
+    border: 3px solid transparent;
+}
+.slider-imagenes img:hover {
+    transform: scale(1.05);
+    border-color: #073B5C;
+}
+.carrusel-fotos {
+    background-color: #45a049;
+    padding: 15px 30px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+section {
+    padding: 40px 5%; /* Usar % para padding lateral puede ser más adaptable */
+    max-width: 900px;
+    margin: 20px auto; /* Añadir margen vertical entre secciones */
+}
+section h2 {
+    color: #073B5C;
+    margin-bottom: 15px; /* Espacio debajo del título de sección */
+    border-bottom: 2px solid #4CAF50; /* Línea divisoria opcional */
+    padding-bottom: 5px; /* Espacio para la línea */
+}
+.cuadro-informativo {
+    background-color: #073B5C;
+    padding: 20px 30px;
+    display: flex;
+    /* flex-wrap: wrap; */ /* Ya no es necesario si usamos flex-direction: column */
+    flex-direction: column;
+    gap: 15px; /* Reducir un poco el gap puede ser bueno */
+    border-radius: 10px;
+    border-left: 8px solid #45a049;
+}
+.texto1-cuadro-informativo {
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem); /* Ajustar clamp */
+    color: #FFB400; /* Cambiar color para destacar títulos */
+    /* color: white; */
+}
+.texto2-cuadro-informativo {
+    font-weight: 300;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem); /* Ajustar clamp */
+    color: white;
+    padding-left: 15px; /* Indentar el texto descriptivo */
+    border-left: 3px solid #4CAF50; /* Añadir una pequeña línea izquierda */
+    margin-bottom: 10px; /* Espacio antes del siguiente título */
+}
+
+/* Eliminar estilos redundantes o conflictivos */
+/* .texto1-cuadro-informativo,.texto2-cuadro-informativo { */
+    /* color: white; */ /* Ya definido arriba */
+    /* font-size: clamp(1rem, 2.5vw, 1.2rem); */ /* Sobrescrito por las reglas específicas */
+/* } */
+
+/* .texto1-cuadro-bienvenida,.texto2-cuadro-bienvenida { */
+    /* flex: 1; */ /* Sobrescrito por reglas más específicas */
+    /* min-width: 250px; */ /* Sobrescrito por reglas más específicas */
+/* } */
+
+/* Estilos para listas dentro del cuadro informativo */
+.cuadro-informativo ul {
+    list-style: disc;
+    margin-left: 20px; /* Indentación estándar para listas */
+    padding-left: 20px;
+}
+.cuadro-informativo ul li {
+    margin-bottom: 8px; /* Espacio entre elementos de la lista */
+}
+
+/* Estilos para la sección de contacto */
+#contacto a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+#contacto a:hover {
+    text-decoration: underline;
+    color: #45a049;
+}
