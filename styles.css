@@ -1,219 +1,468 @@
+/* --- Variables CSS --- */
+:root {
+    --primary-color: #073B5C; /* Azul oscuro */
+    --secondary-color: #4CAF50; /* Verde */
+    --accent-color: #FFB400; /* Amarillo/Naranja para estrellas/acentos */
+    --light-bg: #f8f9fa; /* Fondo claro para secciones */
+    --dark-text: #333;
+    --light-text: #ffffff;
+    --border-radius: 10px;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.4s;
+}
+
+/* --- Estilos Globales --- */
 html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
 }
+
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; /* Fondo base blanco */
+    color: var(--dark-text);
+    line-height: 1.6;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 0;
+}
+
+h2 { /* Títulos de sección */
+    font-size: 2rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--secondary-color);
+    display: inline-block; /* Para que el borde no ocupe todo el ancho */
+}
+
+h3 {
+     font-size: 1.4rem;
+     font-weight: 600;
+     margin-bottom: 10px;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: #45a049; /* Verde más oscuro al pasar el ratón */
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.list-icon {
+    color: var(--secondary-color);
+    margin-right: 10px;
+    font-size: 1.1em; /* Tamaño del icono de lista */
+}
+
+/* --- Header --- */
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: transparent; /* Asegúrate que el fondo del header no oculte contenido debajo al hacer scroll si es necesario, o añade un color sólido */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Añadir un color de fondo al header puede ser útil si el contenido pasa por debajo */
-    /* background-color: white;  */ /* Descomenta si prefieres un fondo sólido */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    backdrop-filter: blur(5px); /* Efecto blur para navegadores compatibles */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color var(--transition-speed) ease;
 }
+
+/* Opcional: Cambiar fondo del header al hacer scroll
+body.scrolled header {
+     background-color: rgba(255, 255, 255, 1);
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+} */
+
 .dividor-contenedor {
-    max-width: 10000px; /* Considera si este valor tan grande es necesario, quizás 1200px o 1400px sea más común */
+    max-width: 1200px; /* Ancho máximo más estándar */
     margin: 0 auto;
+    padding: 0 20px; /* Padding lateral */
 }
+
 .titulo-bloque {
-    background-color: #073B5C;
-    padding: 15px 30px;
+    background-color: var(--primary-color);
+    padding: 10px 25px; /* Ajuste de padding */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-left: 8px solid #4CAF50;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    margin: 20px auto 5px auto; /* Ajustado el margen inferior */
-    max-width: 80%;
+    border-radius: var(--border-radius);
+    margin: 15px auto 5px auto; /* Margen ajustado */
+    max-width: 95%; /* Ajuste de ancho máximo */
+    box-shadow: var(--box-shadow);
+    border-left: none; /* Eliminada la barra verde izquierda aquí */
 }
+
 .logo-container img {
-    height: 60px;
-    width: 60px;
-    border-radius: 8px;
+    height: 55px; /* Tamaño ajustado */
+    width: auto; /* Ancho automático para mantener proporción */
+    border-radius: 5px;
+    vertical-align: middle; /* Alineación vertical */
 }
+
 .titulo-con-estrellas {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px; /* Espacio aumentado */
     flex-grow: 1;
     justify-content: center;
 }
+
 .titulo-texto {
     font-weight: 700;
-    font-size: 28px;
-    color: white;
+    font-size: clamp(1.5rem, 4vw, 2rem); /* Tamaño de fuente adaptable */
+    color: var(--light-text);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Sombra de texto sutil */
 }
+
 .estrella {
-    font-size: 26px;
-    color: #FFB400;
+    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Tamaño adaptable */
+    color: var(--accent-color);
 }
+
 .menu-botones {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px; /* Espacio ajustado */
     flex-wrap: wrap;
-    padding-bottom: 10px;
-    /* Este contenedor no necesita un background-color: transparent explícito si el header ya lo tiene o es el color por defecto */
-    /* background-color: transparent; */
-    /* Si quieres que los botones tengan un fondo propio bajo ellos, puedes añadirlo aquí */
-     background-color: #f8f8f8; /* Ejemplo de fondo claro para los botones */
-     padding-top: 5px; /* Añadir espacio arriba si es necesario */
-     border-bottom-left-radius: 10px; /* Opcional: redondear esquinas */
-     border-bottom-right-radius: 10px; /* Opcional: redondear esquinas */
-     max-width: 80%; /* Igual que el titulo-bloque */
-     margin: 0 auto 10px auto; /* Centrar y añadir margen inferior */
+    padding: 10px 0 15px 0; /* Padding vertical */
+    background-color: transparent; /* Sin fondo explícito */
+}
 
-}
 .menu-botones button {
-    padding: 9px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
+    padding: 10px 20px; /* Padding aumentado */
+    border: 2px solid transparent; /* Borde transparente inicial */
+    border-radius: 25px; /* Botones más redondeados */
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    font-weight: 600; /* Peso de fuente ajustado */
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all var(--transition-speed) ease; /* Transición para todos los cambios */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.menu-botones button:hover {
-    background-color: #45a049;
+
+.menu-botones button:hover,
+.menu-botones button:focus { /* Añadido :focus para accesibilidad */
+    background-color: #45a049; /* Verde más oscuro */
+    color: var(--light-text);
+    border-color: var(--accent-color); /* Borde de acento al pasar el ratón */
+    transform: translateY(-2px); /* Efecto ligero de elevación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none; /* Quitar outline por defecto en focus */
 }
+
+/* --- Secciones --- */
+main {
+    padding-top: 20px; /* Espacio después del header fijo */
+}
+
+section {
+    padding: 60px 5%; /* Padding vertical y horizontal en % */
+    max-width: 1100px; /* Ancho máximo de contenido */
+    margin: 40px auto; /* Margen entre secciones */
+    background-color: var(--light-bg); /* Fondo claro para secciones */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden; /* Para contener elementos flotantes o con márgenes */
+}
+
+/* Alternar fondo de secciones (opcional) */
+section:nth-of-type(even) {
+     background-color: #ffffff; /* Fondo blanco para secciones pares */
+}
+
+
+/* --- Cuadro Bienvenida --- */
 .cuadro-bienvenida {
-    background-color: #073B5C;
-    padding: 20px 30px;
+    background: linear-gradient(135deg, var(--primary-color), #0a5a8a); /* Gradiente sutil */
+    padding: 30px 40px;
     display: flex;
-    flex-wrap: wrap; /* Cambiado a wrap para mejor responsividad */
-    flex-direction: row; /* Cambiado a row para que los textos estén uno al lado del otro si caben */
+    flex-direction: column; /* Apilado por defecto */
     gap: 20px;
-    border-radius: 10px;
-    border-left: 8px solid #45a049;
+    border-radius: var(--border-radius);
+    color: var(--light-text);
+    margin-bottom: 30px; /* Espacio antes del carrusel */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2); /* Sombra interior */
 }
+
 .texto1-cuadro-bienvenida {
     font-weight: 700;
-    font-size: 28px; /* Puede ser demasiado grande en pantallas pequeñas, considera usar clamp */
-    color: white;
-    flex: 1; /* Permite que crezca */
-    min-width: 200px; /* Ancho mínimo */
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
 .texto2-cuadro-bienvenida {
-    font-weight: 350;
-    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Buen uso de clamp */
-    color: white;
-    flex: 2; /* Permite que crezca más que el texto1 */
-    min-width: 300px; /* Ancho mínimo */
+    font-weight: 300;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    max-width: 800px; /* Limitar ancho del texto */
+}
+
+/* En pantallas más grandes, poner textos lado a lado */
+@media (min-width: 768px) {
+    .cuadro-bienvenida {
+        flex-direction: row;
+        align-items: center;
+    }
+    .texto1-cuadro-bienvenida {
+        flex: 1;
+        text-align: left;
+    }
+    .texto2-cuadro-bienvenida {
+        flex: 2;
+    }
+}
+
+
+/* --- Carrusel de Imágenes --- */
+.carrusel-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Ancho máximo del carrusel */
+    margin: 30px auto;
+    overflow: hidden; /* Oculta lo que se sale del contenedor */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.slider-wrapper {
+    width: 100%;
+    overflow: hidden; /* Oculta el desbordamiento del slider interno */
 }
 
 .slider-imagenes {
     display: flex;
-    overflow-x: auto; /* Permite scroll horizontal */
-    gap: 20px;
-    padding: 20px 0px; /* Quitar padding lateral si el contenedor ya lo tiene */
-    border-radius: 10px; /* Este radius puede no ser visible si las imágenes lo tapan */
-    scrollbar-width: thin; /* Estilo opcional para la barra de scroll */
-    scrollbar-color: #073B5C #f0f0f0; /* Estilo opcional para la barra de scroll */
+    /* La animación moverá este contenedor */
+    /* El ancho debe ser la suma de anchos de todos los slides */
+    width: calc(300px * 5); /* (Ancho slide) * (Número de slides) - Ajusta si añades/quitas imgs */
+    animation: scroll 20s linear infinite; /* Duración = 4s por imagen * 5 imágenes */
+    /* Pausar animación al pasar el ratón */
 }
 
-/* Webkit (Chrome, Safari) scrollbar styles */
-.slider-imagenes::-webkit-scrollbar {
-  height: 8px;
-}
-.slider-imagenes::-webkit-scrollbar-track {
-  background: #f0f0f0;
-  border-radius: 10px;
-}
-.slider-imagenes::-webkit-scrollbar-thumb {
-  background-color: #073B5C;
-  border-radius: 10px;
-  border: 2px solid #f0f0f0;
+.slider-imagenes:hover {
+    animation-play-state: paused;
 }
 
-.slider-imagenes img {
-    flex: 0 0 auto; /* No crecer, no encoger, base automática */
-    width: 300px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s, border-color 0.3s;
-    border: 3px solid transparent;
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    /* Moverse hasta el punto antes de que la última imagen duplicada se muestre */
+    100% { transform: translateX(calc(-300px * 4)); } /* -(Ancho slide) * (Número de slides ORIGINALES) */
 }
-.slider-imagenes img:hover {
-    transform: scale(1.05);
-    border-color: #073B5C;
+
+.slide {
+    flex: 0 0 300px; /* No crecer, no encoger, base de 300px */
+    padding: 0 10px; /* Espacio entre imágenes */
+    box-sizing: border-box; /* Incluir padding en el ancho */
 }
-.carrusel-fotos {
-    background-color: #45a049;
-    padding: 15px 30px;
-    margin-top: 15px;
-    border-radius: 10px;
+
+.slide img {
+    width: 100%; /* Hacer la imagen llenar el div .slide */
+    height: 200px; /* Altura fija para consistencia */
+    object-fit: cover; /* Cubrir el espacio sin distorsionar */
+    border-radius: var(--border-radius);
+    display: block; /* Evitar espacio extra debajo de la imagen */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-section {
-    padding: 40px 5%; /* Usar % para padding lateral puede ser más adaptable */
-    max-width: 900px;
-    margin: 20px auto; /* Añadir margen vertical entre secciones */
+
+.slide img:hover {
+     transform: scale(1.03); /* Zoom ligero al pasar el ratón */
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
-section h2 {
-    color: #073B5C;
-    margin-bottom: 15px; /* Espacio debajo del título de sección */
-    border-bottom: 2px solid #4CAF50; /* Línea divisoria opcional */
-    padding-bottom: 5px; /* Espacio para la línea */
-}
+
+
+/* --- Cuadro Informativo --- */
 .cuadro-informativo {
-    background-color: #073B5C;
-    padding: 20px 30px;
+    background-color: transparent; /* Quitar fondo anterior, la sección ya tiene */
+    padding: 0; /* Quitar padding anterior */
     display: flex;
-    /* flex-wrap: wrap; */ /* Ya no es necesario si usamos flex-direction: column */
     flex-direction: column;
-    gap: 15px; /* Reducir un poco el gap puede ser bueno */
-    border-radius: 10px;
-    border-left: 8px solid #45a049;
+    gap: 30px; /* Espacio entre items */
+    border-left: none; /* Quitar borde izquierdo anterior */
+    border-radius: 0;
 }
-.texto1-cuadro-informativo {
-    font-weight: 600;
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem); /* Ajustar clamp */
-    color: #FFB400; /* Cambiar color para destacar títulos */
-    /* color: white; */
+
+.info-item {
+    background-color: #ffffff; /* Fondo blanco para cada item */
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+    border-left: 5px solid var(--secondary-color); /* Borde izquierdo verde */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.texto1-cuadro-informativo { /* Ahora es h3 */
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px; /* Más espacio después del título */
+}
+
+.icon-info {
+    color: var(--secondary-color);
+    font-size: 1.2em; /* Iconos un poco más grandes */
+}
+
 .texto2-cuadro-informativo {
-    font-weight: 300;
-    font-size: clamp(0.95rem, 2.2vw, 1.1rem); /* Ajustar clamp */
-    color: white;
-    padding-left: 15px; /* Indentar el texto descriptivo */
-    border-left: 3px solid #4CAF50; /* Añadir una pequeña línea izquierda */
-    margin-bottom: 10px; /* Espacio antes del siguiente título */
+    color: var(--dark-text);
+    font-size: 1rem;
+    padding-left: 0; /* Quitar padding izquierdo anterior */
+    border-left: none; /* Quitar borde izquierdo anterior */
 }
 
-/* Eliminar estilos redundantes o conflictivos */
-/* .texto1-cuadro-informativo,.texto2-cuadro-informativo { */
-    /* color: white; */ /* Ya definido arriba */
-    /* font-size: clamp(1rem, 2.5vw, 1.2rem); */ /* Sobrescrito por las reglas específicas */
-/* } */
-
-/* .texto1-cuadro-bienvenida,.texto2-cuadro-bienvenida { */
-    /* flex: 1; */ /* Sobrescrito por reglas más específicas */
-    /* min-width: 250px; */ /* Sobrescrito por reglas más específicas */
-/* } */
-
-/* Estilos para listas dentro del cuadro informativo */
-.cuadro-informativo ul {
-    list-style: disc;
-    margin-left: 20px; /* Indentación estándar para listas */
-    padding-left: 20px;
-}
-.cuadro-informativo ul li {
-    margin-bottom: 8px; /* Espacio entre elementos de la lista */
+.texto2-cuadro-informativo p:last-child {
+    margin-bottom: 0; /* Evitar doble margen al final */
 }
 
-/* Estilos para la sección de contacto */
-#contacto a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
+/* --- Contacto --- */
+#contacto .contacto-links {
+    margin-top: 20px;
 }
-#contacto a:hover {
-    text-decoration: underline;
-    color: #45a049;
+
+#contacto p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.icon-contacto {
+    color: var(--primary-color);
+    font-size: 1.5em;
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px; /* Espacio antes del footer */
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--accent-color);
+}
+footer a:hover {
+    color: var(--light-text);
+}
+
+/* --- Animación Fade-in --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+    .titulo-texto {
+        font-size: 1.5rem; /* Reducir tamaño en móviles */
+    }
+    .estrella {
+        font-size: 1.2rem;
+    }
+    .menu-botones {
+        gap: 10px;
+    }
+    .menu-botones button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    section {
+        padding: 40px 5%;
+        margin: 20px auto;
+    }
+    .cuadro-bienvenida {
+        padding: 20px;
+    }
+    .texto1-cuadro-bienvenida {
+        font-size: 1.6rem;
+    }
+    .texto2-cuadro-bienvenida {
+        font-size: 1rem;
+    }
+
+    /* Ajustar carrusel para móviles (quizás mostrar menos items o reducir tamaño) */
+     .slide {
+        flex: 0 0 250px; /* Más pequeño en móviles */
+    }
+     .slider-imagenes {
+         /* Recalcular ancho total y animación */
+         width: calc(250px * 5); /* Ajusta si cambias número de slides */
+         animation-name: scroll-mobile; /* Usar animación diferente si es necesario */
+    }
+     /* Ajustar keyframes si el ancho cambió */
+    @keyframes scroll-mobile {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-250px * 4)); } /* Ajustar al nuevo ancho */
+    }
+
+}
+
+@media (max-width: 480px) {
+    .titulo-bloque {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 15px;
+    }
+     .logo-container img {
+        height: 45px;
+    }
+    .titulo-texto {
+        font-size: 1.3rem;
+    }
+     .menu-botones {
+         justify-content: space-around; /* Distribuir mejor en pantallas pequeñas */
+     }
+     .menu-botones button {
+         width: 45%; /* Hacer botones ocupar casi mitad */
+         margin-bottom: 10px; /* Espacio si se van a dos líneas */
+     }
+      .slide {
+        flex: 0 0 200px; /* Aún más pequeño */
+     }
+     .slider-imagenes {
+         width: calc(200px * 5);
+         animation-name: scroll-tiny;
+     }
+     @keyframes scroll-tiny {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-200px * 4)); }
+     }
 }
