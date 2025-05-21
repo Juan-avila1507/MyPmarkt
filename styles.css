@@ -1,468 +1,234 @@
-/* --- Variables CSS --- */
 :root {
-    --primary-color: #073B5C; /* Azul oscuro */
-    --secondary-color: #4CAF50; /* Verde */
-    --accent-color: #FFB400; /* Amarillo/Naranja para estrellas/acentos */
-    --light-bg: #f8f9fa; /* Fondo claro para secciones */
-    --dark-text: #333;
-    --light-text: #ffffff;
-    --border-radius: 10px;
-    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --transition-speed: 0.4s;
+    --primary:  #073B5C;
+    --secondary: #4CAF50;
+    --dark: #333;
+    --light: #fff;
 }
 
-/* --- Estilos Globales --- */
-html {
-    scroll-behavior: smooth;
-    font-size: 16px; /* Base font size */
-}
-
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    background-color: #ffffff; /* Fondo base blanco */
-    color: var(--dark-text);
-    line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-top: 0;
-}
-
-h2 { /* Títulos de sección */
-    font-size: 2rem;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--secondary-color);
-    display: inline-block; /* Para que el borde no ocupe todo el ancho */
-}
-
-h3 {
-     font-size: 1.4rem;
-     font-weight: 600;
-     margin-bottom: 10px;
-}
-
-a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: color var(--transition-speed) ease;
-}
-
-a:hover {
-    color: #45a049; /* Verde más oscuro al pasar el ratón */
-    text-decoration: underline;
-}
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-ul li {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.list-icon {
-    color: var(--secondary-color);
-    margin-right: 10px;
-    font-size: 1.1em; /* Tamaño del icono de lista */
-}
-
-/* --- Header --- */
+/* Header */
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
-    backdrop-filter: blur(5px); /* Efecto blur para navegadores compatibles */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color var(--transition-speed) ease;
-}
-
-/* Opcional: Cambiar fondo del header al hacer scroll
-body.scrolled header {
-     background-color: rgba(255, 255, 255, 1);
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-} */
-
-.dividor-contenedor {
-    max-width: 1200px; /* Ancho máximo más estándar */
-    margin: 0 auto;
-    padding: 0 20px; /* Padding lateral */
-}
-
-.titulo-bloque {
-    background-color: var(--primary-color);
-    padding: 10px 25px; /* Ajuste de padding */
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    border-radius: var(--border-radius);
-    margin: 15px auto 5px auto; /* Margen ajustado */
-    max-width: 95%; /* Ajuste de ancho máximo */
-    box-shadow: var(--box-shadow);
-    border-left: none; /* Eliminada la barra verde izquierda aquí */
+    align-items: center;
+    z-index: 100;
+    transition: all 0.3s ease;
 }
 
-.logo-container img {
-    height: 55px; /* Tamaño ajustado */
-    width: auto; /* Ancho automático para mantener proporción */
-    border-radius: 5px;
-    vertical-align: middle; /* Alineación vertical */
+header.scrolled {
+    background: var(--light);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 15px 10%;
 }
 
-.titulo-con-estrellas {
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--light);
+    text-decoration: none;
+}
+
+header.scrolled .logo {
+    color: var(--primary);
+}
+
+.navbar a {
+    color: var(--light);
+    margin-left: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header.scrolled .navbar a {
+    color: var(--dark);
+}
+
+.navbar a:hover {
+    color: var(--secondary);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio aumentado */
-    flex-grow: 1;
     justify-content: center;
+    background-size: cover;
+    background-position: center;
 }
 
-.titulo-texto {
-    font-weight: 700;
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Tamaño de fuente adaptable */
-    color: var(--light-text);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Sombra de texto sutil */
+.hero-content {
+    text-align: center;
+    color: var(--light);
+    z-index: 10;
+    padding: 0 20px;
 }
 
-.estrella {
-    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Tamaño adaptable */
-    color: var(--accent-color);
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
-.menu-botones {
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.download-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px; /* Espacio ajustado */
-    flex-wrap: wrap;
-    padding: 10px 0 15px 0; /* Padding vertical */
-    background-color: transparent; /* Sin fondo explícito */
-}
-
-.menu-botones button {
-    padding: 10px 20px; /* Padding aumentado */
-    border: 2px solid transparent; /* Borde transparente inicial */
-    border-radius: 25px; /* Botones más redondeados */
-    background-color: var(--secondary-color);
-    color: var(--light-text);
-    font-weight: 600; /* Peso de fuente ajustado */
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all var(--transition-speed) ease; /* Transición para todos los cambios */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.menu-botones button:hover,
-.menu-botones button:focus { /* Añadido :focus para accesibilidad */
-    background-color: #45a049; /* Verde más oscuro */
-    color: var(--light-text);
-    border-color: var(--accent-color); /* Borde de acento al pasar el ratón */
-    transform: translateY(-2px); /* Efecto ligero de elevación */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    outline: none; /* Quitar outline por defecto en focus */
-}
-
-/* --- Secciones --- */
-main {
-    padding-top: 20px; /* Espacio después del header fijo */
-}
-
-section {
-    padding: 60px 5%; /* Padding vertical y horizontal en % */
-    max-width: 1100px; /* Ancho máximo de contenido */
-    margin: 40px auto; /* Margen entre secciones */
-    background-color: var(--light-bg); /* Fondo claro para secciones */
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    overflow: hidden; /* Para contener elementos flotantes o con márgenes */
-}
-
-/* Alternar fondo de secciones (opcional) */
-section:nth-of-type(even) {
-     background-color: #ffffff; /* Fondo blanco para secciones pares */
-}
-
-
-/* --- Cuadro Bienvenida --- */
-.cuadro-bienvenida {
-    background: linear-gradient(135deg, var(--primary-color), #0a5a8a); /* Gradiente sutil */
-    padding: 30px 40px;
-    display: flex;
-    flex-direction: column; /* Apilado por defecto */
     gap: 20px;
-    border-radius: var(--border-radius);
-    color: var(--light-text);
-    margin-bottom: 30px; /* Espacio antes del carrusel */
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.2); /* Sombra interior */
 }
 
-.texto1-cuadro-bienvenida {
-    font-weight: 700;
-    font-size: clamp(1.8rem, 5vw, 2.2rem);
-    display: flex;
+.download-btn {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    padding: 12px 25px;
+    background: var(--light);
+    color: var(--dark);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
 }
 
-.texto2-cuadro-bienvenida {
-    font-weight: 300;
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    max-width: 800px; /* Limitar ancho del texto */
+.download-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* En pantallas más grandes, poner textos lado a lado */
-@media (min-width: 768px) {
-    .cuadro-bienvenida {
-        flex-direction: row;
+.download-btn i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+/* Sections */
+section {
+    padding: 100px 10%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--primary);
+}
+
+/* What is Section */
+.what-is {
+    background: #f9f9f9;
+}
+
+/* Benefits Section */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+/* Download Section */
+.download-section {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--light);
+}
+
+.store-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.store-btn {
+    display: inline-block;
+    width: 180px;
+    transition: transform 0.3s;
+}
+
+.store-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: 30px 10%;
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    color: var(--light);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .download-buttons {
+        flex-direction: column;
         align-items: center;
     }
-    .texto1-cuadro-bienvenida {
-        flex: 1;
-        text-align: left;
-    }
-    .texto2-cuadro-bienvenida {
-        flex: 2;
-    }
-}
 
-
-/* --- Carrusel de Imágenes --- */
-.carrusel-container {
-    position: relative;
-    width: 100%;
-    max-width: 900px; /* Ancho máximo del carrusel */
-    margin: 30px auto;
-    overflow: hidden; /* Oculta lo que se sale del contenedor */
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
-
-.slider-wrapper {
-    width: 100%;
-    overflow: hidden; /* Oculta el desbordamiento del slider interno */
-}
-
-.slider-imagenes {
-    display: flex;
-    /* La animación moverá este contenedor */
-    /* El ancho debe ser la suma de anchos de todos los slides */
-    width: calc(300px * 5); /* (Ancho slide) * (Número de slides) - Ajusta si añades/quitas imgs */
-    animation: scroll 20s linear infinite; /* Duración = 4s por imagen * 5 imágenes */
-    /* Pausar animación al pasar el ratón */
-}
-
-.slider-imagenes:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    /* Moverse hasta el punto antes de que la última imagen duplicada se muestre */
-    100% { transform: translateX(calc(-300px * 4)); } /* -(Ancho slide) * (Número de slides ORIGINALES) */
-}
-
-.slide {
-    flex: 0 0 300px; /* No crecer, no encoger, base de 300px */
-    padding: 0 10px; /* Espacio entre imágenes */
-    box-sizing: border-box; /* Incluir padding en el ancho */
-}
-
-.slide img {
-    width: 100%; /* Hacer la imagen llenar el div .slide */
-    height: 200px; /* Altura fija para consistencia */
-    object-fit: cover; /* Cubrir el espacio sin distorsionar */
-    border-radius: var(--border-radius);
-    display: block; /* Evitar espacio extra debajo de la imagen */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.slide img:hover {
-     transform: scale(1.03); /* Zoom ligero al pasar el ratón */
-     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-
-/* --- Cuadro Informativo --- */
-.cuadro-informativo {
-    background-color: transparent; /* Quitar fondo anterior, la sección ya tiene */
-    padding: 0; /* Quitar padding anterior */
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Espacio entre items */
-    border-left: none; /* Quitar borde izquierdo anterior */
-    border-radius: 0;
-}
-
-.info-item {
-    background-color: #ffffff; /* Fondo blanco para cada item */
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
-    border-left: 5px solid var(--secondary-color); /* Borde izquierdo verde */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.texto1-cuadro-informativo { /* Ahora es h3 */
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px; /* Más espacio después del título */
-}
-
-.icon-info {
-    color: var(--secondary-color);
-    font-size: 1.2em; /* Iconos un poco más grandes */
-}
-
-.texto2-cuadro-informativo {
-    color: var(--dark-text);
-    font-size: 1rem;
-    padding-left: 0; /* Quitar padding izquierdo anterior */
-    border-left: none; /* Quitar borde izquierdo anterior */
-}
-
-.texto2-cuadro-informativo p:last-child {
-    margin-bottom: 0; /* Evitar doble margen al final */
-}
-
-/* --- Contacto --- */
-#contacto .contacto-links {
-    margin-top: 20px;
-}
-
-#contacto p {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-.icon-contacto {
-    color: var(--primary-color);
-    font-size: 1.5em;
-}
-
-
-/* --- Footer --- */
-footer {
-    background-color: var(--primary-color);
-    color: var(--light-text);
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px; /* Espacio antes del footer */
-    font-size: 0.9rem;
-}
-
-footer a {
-    color: var(--accent-color);
-}
-footer a:hover {
-    color: var(--light-text);
-}
-
-/* --- Animación Fade-in --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 768px) {
-    h2 {
-        font-size: 1.8rem;
-    }
-    .titulo-texto {
-        font-size: 1.5rem; /* Reducir tamaño en móviles */
-    }
-    .estrella {
-        font-size: 1.2rem;
-    }
-    .menu-botones {
-        gap: 10px;
-    }
-    .menu-botones button {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-    section {
-        padding: 40px 5%;
-        margin: 20px auto;
-    }
-    .cuadro-bienvenida {
-        padding: 20px;
-    }
-    .texto1-cuadro-bienvenida {
-        font-size: 1.6rem;
-    }
-    .texto2-cuadro-bienvenida {
-        font-size: 1rem;
-    }
-
-    /* Ajustar carrusel para móviles (quizás mostrar menos items o reducir tamaño) */
-     .slide {
-        flex: 0 0 250px; /* Más pequeño en móviles */
-    }
-     .slider-imagenes {
-         /* Recalcular ancho total y animación */
-         width: calc(250px * 5); /* Ajusta si cambias número de slides */
-         animation-name: scroll-mobile; /* Usar animación diferente si es necesario */
-    }
-     /* Ajustar keyframes si el ancho cambió */
-    @keyframes scroll-mobile {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-250px * 4)); } /* Ajustar al nuevo ancho */
-    }
-
-}
-
-@media (max-width: 480px) {
-    .titulo-bloque {
+    .store-buttons {
         flex-direction: column;
-        gap: 10px;
-        text-align: center;
-        padding: 15px;
+        align-items: center;
     }
-     .logo-container img {
-        height: 45px;
-    }
-    .titulo-texto {
-        font-size: 1.3rem;
-    }
-     .menu-botones {
-         justify-content: space-around; /* Distribuir mejor en pantallas pequeñas */
-     }
-     .menu-botones button {
-         width: 45%; /* Hacer botones ocupar casi mitad */
-         margin-bottom: 10px; /* Espacio si se van a dos líneas */
-     }
-      .slide {
-        flex: 0 0 200px; /* Aún más pequeño */
-     }
-     .slider-imagenes {
-         width: calc(200px * 5);
-         animation-name: scroll-tiny;
-     }
-     @keyframes scroll-tiny {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-200px * 4)); }
-     }
 }
