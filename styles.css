@@ -756,7 +756,6 @@ body.dark-mode .popular-badge {
         margin: 0 auto;
     }
 }
-
 /* Para tablets (vertical) y móviles grandes (máx. 768px) */
 @media (max-width: 768px) {
     .container {
@@ -839,7 +838,7 @@ body.dark-mode .popular-badge {
         color: var(--highlight-text);
     }
 
-    /* ESTILOS AÑADIDOS/MODIFICADOS PARA EL THEME-TOGGLE DENTRO DEL MENÚ MÓVIL */
+    /* ESTILOS PARA EL THEME-TOGGLE DENTRO DEL MENÚ MÓVIL */
     .main-nav .nav-list #theme-toggle {
         display: block; /* Asegurarse de que ocupe su propio espacio */
         width: 100%; /* Ocupar todo el ancho disponible para alineación */
@@ -851,10 +850,9 @@ body.dark-mode .popular-badge {
         font-size: 1.1rem; /* Mismo tamaño de fuente que los nav-links */
         color: var(--primary-text); /* Mismo color de texto que los nav-links */
         transition: color var(--transition-fast);
-        /* Importante: para que el icono se centre si el botón es 100% de ancho */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: flex; /* Para centrar el icono dentro del botón */
+        justify-content: center; /* Para centrar el icono dentro del botón */
+        align-items: center; /* Para centrar el icono dentro del botón */
     }
 
     .main-nav .nav-list #theme-toggle:hover {
@@ -864,7 +862,7 @@ body.dark-mode .popular-badge {
     .main-nav .nav-list #theme-toggle i {
         font-size: 1.1rem; /* Asegurar que el icono tenga el tamaño correcto */
     }
-    /* --- FIN DE LAS REGLAS CRÍTICAS --- */
+    /* --- FIN DE LAS REGLAS CRÍTICAS DE NAVEGACIÓN --- */
 
     /* Botones */
     .btn {
@@ -872,33 +870,39 @@ body.dark-mode .popular-badge {
         font-size: 0.95rem;
     }
 
-    /* Carrusel en Hero */
+    /* Carrusel en Hero - REVISIÓN CRÍTICA CON !important y ajustes */
     .hero-image-carousel {
-        padding: 0; /* <--- CAMBIO CRÍTICO: ELIMINAR EL PADDING INTERNO DEL CARRUSEL */
+        padding: 0 !important; /* Fuerza a que no haya padding interno */
         max-width: 100%; /* Asegura que el contenedor no exceda el ancho del viewport */
-        width: 95%; /* Pequeño margen lateral si el .container tiene 0 padding */
-        margin: 0 auto; /* Centrar el carrusel */
+        width: 95%; /* Pequeño margen lateral para estética, si el .container no tiene padding */
+        margin: 0 auto; /* Centra el carrusel */
         box-shadow: var(--shadow-medium);
         border-radius: var(--border-radius-md);
-        overflow: hidden; /* Esencial para que las imágenes se recorten */
+        overflow: hidden !important; /* Esencial y forzado para que las imágenes se recorten */
         position: relative; /* Necesario para que el track se posicione correctamente dentro */
+        box-sizing: border-box; /* Asegura que padding/border no sumen al ancho */
     }
     .carousel-track {
-        animation: carouselScrollMobile 30s linear infinite; /* <--- AUMENTAR DURACIÓN para menor velocidad */
-        width: 800%; /* <--- SOLUCIÓN DEFINITIVA: Si tienes 8 imágenes (4 únicas duplicadas) */
+        display: flex !important; /* Asegura que sea un contenedor flex */
+        animation: carouselScrollMobile 40s linear infinite !important; /* Forzado y más lento */
+        width: 800% !important; /* Forzado y explícito si tienes 8 imágenes (4 únicas duplicadas) */
+        will-change: transform; /* Hint para el navegador, puede mejorar el rendimiento */
+        flex-wrap: nowrap !important; /* CRÍTICO: Evita que las imágenes se envuelvan */
     }
     .carousel-img {
-        flex: 0 0 100%; /* <--- CRÍTICO: Cada imagen ocupa el 100% de la "ventana" del carrusel */
-        width: 100%;    /* Asegura que la imagen llene su flex-basis */
+        flex: 0 0 100% !important; /* <--- CRÍTICO: Cada imagen ocupa el 100% de la "ventana" del carrusel */
+        width: 100% !important;    /* Asegura que la imagen llene su flex-basis */
         height: 180px; /* Reducir altura de la imagen para móviles */
-        object-fit: cover; /* Recorta la imagen para que llene el espacio sin distorsión */
-        display: block; /* Evita pequeños espacios extra que puedan causar desalineación */
+        object-fit: cover !important; /* Recorta la imagen para que llene el espacio sin distorsión */
+        display: block !important; /* Evita pequeños espacios extra y problemas de inline */
         border-radius: var(--border-radius-sm);
-        box-shadow: none; /* Eliminar sombra extra para un look más limpio en móvil */
-        margin: 0; /* <--- CRÍTICO: No debe haber margen entre imágenes en móvil */
+        box-shadow: none !important; /* Eliminar sombra extra para un look más limpio en móvil */
+        margin: 0 !important; /* <--- CRÍTICO: No debe haber margen entre imágenes en móvil */
     }
     @keyframes carouselScrollMobile {
         0% { transform: translateX(0); }
+        /* Esto desplazará 4 imágenes completas. Si tienes 8 imágenes en total (4 únicas duplicadas),
+           esto hará que el ciclo se repita suavemente al mostrar las 4 únicas. */
         100% { transform: translateX(calc(-100% * 4)); }
     }
 
@@ -1008,9 +1012,8 @@ body.dark-mode .popular-badge {
     .logo-image {
         height: 35px;
     }
-    /* Asegúrate de que este .theme-toggle no entre en conflicto con el .main-nav .nav-list #theme-toggle */
-    /* Este estilo solo aplicaría si el theme-toggle estuviera fuera del menú, lo cual ya no está en móvil */
-    /* Si lo dejas, no causará problemas, pero es un estilo "muerto" para móvil ahora */
+    /* El .theme-toggle de este media query ya no es relevante si el botón está dentro del menú */
+    /* Dejarlo no causa conflicto, pero puedes borrarlo si quieres. */
     /* .theme-toggle {
         font-size: 1.2rem;
     } */
