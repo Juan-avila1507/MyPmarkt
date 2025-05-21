@@ -112,3 +112,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Lógica para el menú de navegación móvil (hamburguesa)
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const navLinks = document.querySelectorAll('.nav-link'); // Seleccionar todos los enlaces de navegación
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            // Cambiar icono de hamburguesa a X y viceversa
+            const icon = menuToggle.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                menuToggle.setAttribute('aria-expanded', 'true');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Cerrar el menú cuando se hace clic en un enlace (para mejorar la UX móvil)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
+});

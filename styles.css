@@ -243,7 +243,7 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-md); /* <-- Mantén este gap para escritorio */
     flex-wrap: wrap;
 }
 
@@ -271,6 +271,37 @@ a:hover {
     display: flex;
     list-style: none;
     gap: var(--spacing-lg);
+}
+/* Estilos para el botón de menú móvil (hamburguesa) */
+.menu-toggle {
+    display: none; /* Oculto por defecto en escritorio */
+    background: none;
+    border: none;
+    font-size: 2rem; /* Tamaño del icono de hamburguesa */
+    cursor: pointer;
+    color: var(--primary-text);
+    transition: color var(--transition-fast);
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius-sm);
+    outline-offset: 4px;
+    z-index: 1001; /* Asegura que esté por encima del menú */
+}
+
+.menu-toggle:hover {
+    color: var(--highlight-text);
+}
+.menu-toggle:focus {
+    outline: 2px dashed var(--highlight-text);
+}
+
+/* Ocultar el theme-toggle en móvil (para simplificar el header, lo controlará el JS si es necesario) */
+@media (max-width: 768px) {
+    .theme-toggle {
+        display: none; /* OCULTAR EL BOTÓN DE TEMA EN MÓVIL si no quieres que aparezca junto al menú hamburguesa */
+    }
+    .menu-toggle {
+        display: block; /* MOSTRAR EL BOTÓN DE HAMBURGUESA EN MÓVIL */
+    }
 }
 
 .nav-link {
@@ -749,31 +780,66 @@ body.dark-mode .popular-badge {
         font-size: 1.05rem;
     }
 
-    /* Header y Navegación */
+    /* Header y Navegación (para menú hamburguesa) */
     .header-inner {
-        flex-direction: column; /* Apilar logo, nav y toggle */
+        flex-direction: row; /* VOLVER A FILA, para que el logo y el toggle estén uno al lado del otro */
+        justify-content: space-between; /* Espacio entre logo y toggle */
         align-items: center;
-        gap: var(--spacing-sm);
+        flex-wrap: nowrap; /* MUY IMPORTANTE: Evita que el header se envuelva */
+        gap: var(--spacing-xs); /* Pequeño gap */
     }
     .site-logo {
         font-size: 1.6rem;
+        flex-shrink: 0; /* Evita que el logo se encoja */
     }
     .logo-image {
         height: 45px;
     }
+
+    /* --- ESTAS SON LAS REGLAS CRÍTICAS PARA OCULTAR EL MENÚ Y MOSTRARLO CON JS --- */
+    .main-nav {
+        position: absolute; /* Sacar del flujo normal del documento */
+        top: 100%; /* Posicionarlo justo debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: var(--header-bg); /* Fondo del menú desplegado */
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-medium);
+        padding: var(--spacing-md) 0;
+        border-bottom-left-radius: var(--border-radius-md);
+        border-bottom-right-radius: var(--border-radius-md);
+        transform: translateY(-100%); /* OCULTAR: Mueve el menú hacia arriba, fuera de la vista */
+        opacity: 0; /* OCULTAR: Hacerlo transparente */
+        visibility: hidden; /* OCULTAR: Ocultar para accesibilidad y que no reciba clicks */
+        transition: transform var(--transition-medium) ease-out, opacity var(--transition-medium) ease-out, visibility var(--transition-medium) ease-out; /* Transición suave */
+        z-index: 999; /* Asegura que esté por encima del contenido principal */
+    }
+
+    .main-nav.active { /* Esta clase se añade con JavaScript para mostrar el menú */
+        transform: translateY(0); /* MOSTRAR: Mueve el menú a su posición normal */
+        opacity: 1; /* MOSTRAR: Hacerlo visible */
+        visibility: visible; /* MOSTRAR: Habilitar interacción */
+    }
+
     .main-nav .nav-list {
         flex-direction: column; /* Apilar enlaces de navegación */
-        gap: var(--spacing-xs); /* Menos espacio entre ellos */
+        gap: var(--spacing-sm); /* Espacio entre ellos */
         text-align: center;
-        margin-top: var(--spacing-sm);
+        margin-top: 0; /* Eliminar margen superior si existe */
     }
     .nav-link {
         padding: var(--spacing-xs) 0;
-        font-size: 1rem;
+        font-size: 1.1rem; /* Un poco más grande para facilitar el toque */
+        color: var(--primary-text); /* Color claro para enlaces del menú móvil */
     }
-    .theme-toggle {
-        font-size: 1.4rem;
+    .nav-link::after { /* Ajustar el underline para móvil */
+        height: 2px;
+        background-color: var(--highlight-text);
     }
+    .nav-link:hover {
+        color: var(--highlight-text);
+    }
+    /* --- FIN DE LAS REGLAS CRÍTICAS --- */
 
     /* Botones */
     .btn {
@@ -782,15 +848,21 @@ body.dark-mode .popular-badge {
     }
 
     /* Carrusel en Hero */
+    .hero-image-carousel {
+        padding: var(--spacing-xs); /* Ajustar el padding interno del carrusel */
+    }
     .carousel-track {
         animation: carouselScrollMobile 20s linear infinite; /* Animación más rápida para móvil */
-        width: calc(100% * 8); /* Ajustar ancho para un solo elemento visible */
+        width: calc(100% * 8); /* Ajustar ancho para un solo elemento visible (8 imágenes) */
     }
     .carousel-img {
         flex: 0 0 100%; /* Una imagen por vista en móvil */
-        height: 200px; /* Reducir altura de la imagen */
+        height: 180px; /* Reducir altura de la imagen para móviles */
+        object-fit: cover;
+        display: block;
+        border-radius: var(--border-radius-sm);
+        box-shadow: none; /* Eliminar sombra extra para un look más limpio en móvil */
         margin: 0; /* Eliminar margen entre imágenes en móvil */
-        box-shadow: none; /* Eliminar sombra extra */
     }
     @keyframes carouselScrollMobile {
         0% { transform: translateX(0); }
