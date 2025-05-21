@@ -1,116 +1,125 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pocket Market - Comparador de precios en Colombia</title>
-    <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Pocket Market - Tu Comparador de Precios</title> <link rel="icon" type="image/png" href="logo_pequeño.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <a href="#" class="logo">POCKET MARKET</a>
-        <nav class="navbar">
-            <a href="#que-es">¿Qué es?</a>
-            <a href="#beneficios">Beneficios</a>
-            <a href="#descargar">Descargar</a>
-        </nav>
+    <header>
+        <div class="dividor-contenedor">
+            <div class="titulo-bloque">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Logo Pocket Market"> </div>
+                <div class="titulo-con-estrellas">
+                    <i class="fas fa-star estrella"></i>
+                    <span class="titulo-texto">Pocket Market</span>
+                    <i class="fas fa-star estrella"></i>
+                </div>
+            </div>
+            <nav class="menu-botones"> <button onclick="scrollToSection('inicio')">Inicio</button>
+                <button onclick="scrollToSection('informacion')">Información</button>
+                <button onclick="scrollToSection('aliados')">Aliados</button>
+                <button onclick="scrollToSection('contacto')">Contáctanos</button>
+            </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
-                    <div class="hero-content">
-                        <h1>Pocket Market</h1>
-                        <p>Tu comparador de precios en Colombia</p>
-                        <div class="download-buttons">
-                            <a href="#" class="download-btn">
-                                <i class="fab fa-google-play"></i>
-                                Google Play
-                            </a>
-                            <a href="#" class="download-btn">
-                                <i class="fab fa-apple"></i>
-                                App Store
-                            </a>
-                        </div>
+    <main> <section id="inicio" class="fade-in">
+            <div class="cuadro-bienvenida">
+                <div class="texto1-cuadro-bienvenida">
+                    ¡Bienvenido a Pocket Market! <i class="fas fa-shopping-cart"></i> </div>
+                <div class="texto2-cuadro-bienvenida">
+                    <p>Una herramienta pensada para ayudarte a tomar decisiones más inteligentes al momento de hacer tus compras. Ante el constante aumento en los precios de la canasta familiar en Colombia, desarrollamos una aplicación móvil que te permitirá comparar precios en diferentes supermercados y tiendas, todo desde la comodidad de tu celular.</p>
+                    </div>
+            </div>
+
+            <div class="carrusel-container fade-in">
+                <div class="slider-wrapper">
+                    <div class="slider-imagenes">
+                        <div class="slide"><img src="Elegir.jpg" alt="Elige productos fácilmente"></div>
+                        <div class="slide"><img src="precios.jpg" alt="Compara precios actualizados"></div>
+                        <div class="slide"><img src="Super.jpg" alt="Encuentra supermercados cercanos"></div>
+                        <div class="slide"><img src="l2.jpg" alt="Ahorra en tus compras"></div>
+                        <div class="slide"><img src="Elegir.jpg" alt="Elige productos fácilmente"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                 </div>
+        </section>
 
-    <!-- What is Section -->
-    <section id="que-es" class="what-is">
-        <h2 class="section-title">¿Qué es Pocket Market?</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-            Pocket Market es la aplicación líder en Colombia para comparar precios de productos entre diferentes supermercados. 
-            Con nuestra herramienta, podrás ahorrar dinero encontrando las mejores ofertas cerca de ti, crear listas de compras 
-            inteligentes y recibir alertas cuando tus productos favoritos bajen de precio.
-        </p>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="beneficios">
-        <h2 class="section-title">Beneficios</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-percentage"></i>
+        <section id="informacion" class="fade-in">
+             <h2>¿Cómo te Ayudamos?</h2>
+            <div class="cuadro-informativo">
+                <div class="info-item">
+                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-exclamation-circle icon-info"></i> El Problema</h3>
+                    <div class="texto2-cuadro-informativo"><p>En Colombia, llenar el mercado se ha vuelto cada vez más costoso. Muchas familias gastan hasta el 77% de su salario solo en alimentos. Y lo peor: no hay una forma sencilla de saber dónde están los mejores precios. La gente pierde tiempo y dinero recorriendo tiendas o confiando en publicidad que no siempre es real.</p></div>
+                     </div>
+                 <div class="info-item">
+                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-bullseye icon-info"></i> ¿Qué Buscamos?</h3>
+                    <div class="texto2-cuadro-informativo">
+                        <p>Crear una app que te muestre dónde comprar más barato, usando geolocalización, datos actualizados y una interfaz sencilla.</p>
+                        <p>Además queremos:</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle list-icon"></i> Saber quién usará la app, para ajustarla a sus necesidades.</li>
+                            <li><i class="fas fa-check-circle list-icon"></i> Diseñar algo bonito y fácil de usar.</li>
+                            <li><i class="fas fa-check-circle list-icon"></i> Darte alertas de descuentos y ayudarte a ahorrar tiempo.</li>
+                        </ul>
+                         </div>
                 </div>
-                <h3>Ahorra dinero</h3>
-                <p>Compara precios entre múltiples supermercados y encuentra las mejores ofertas</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-map-marker-alt"></i>
+                 <div class="info-item">
+                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-lightbulb icon-info"></i> Nuestra Solución</h3>
+                    <div class="texto2-cuadro-informativo">
+                        <p>Una app que te permite:</p>
+                        <ul>
+                            <li><i class="fas fa-dollar-sign list-icon"></i> Ver precios de productos en varias tiendas.</li>
+                            <li><i class="fas fa-map-marker-alt list-icon"></i> Encontrar las mejores opciones cerca de ti.</li>
+                            <li><i class="fas fa-bell list-icon"></i> Recibir alertas de rebajas.</li>
+                            <li><i class="fas fa-comments list-icon"></i> Leer opiniones de otros compradores.</li>
+                            <li><i class="fas fa-route list-icon"></i> Ahorrar tiempo con rutas inteligentes.</li>
+                        </ul>
+                         </div>
+                 </div>
+                 <div class="info-item">
+                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-chart-line icon-info"></i> Lo que Lograremos</h3>
+                    <div class="texto2-cuadro-informativo">
+                        <p>Con esta app vas a poder tomar mejores decisiones al comprar. Ahorrarás tiempo, plata y apoyarás al comercio local. Además, los negocios competirán más por ofrecer buenos precios.</p>
+                         </div>
                 </div>
-                <h3>Tiendas cercanas</h3>
-                <p>Descubre qué supermercados tienen los mejores precios cerca de tu ubicación</p>
+                 <div class="info-item">
+                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-users icon-info"></i> Sobre el Proyecto</h3>
+                    <div class="texto2-cuadro-informativo">
+                        <p>Este es un prototipo creado por estudiantes de Ingeniería de Sistemas que quieren usar la tecnología para resolver problemas reales. ¡Vamos con toda!</p>
+                         </div>
+                 </div>
             </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-bell"></i>
-                </div>
-                <h3>Alertas de precios</h3>
-                <p>Recibe notificaciones cuando los productos de tu lista bajen de precio</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Download Section -->
-    <section id="descargar" class="download-section">
-        <h2 class="section-title" style="color: white;">Descarga la App</h2>
-        <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
-            Disponible para iOS y Android. ¡Empieza a ahorrar hoy mismo!
-        </p>
-        <div class="store-buttons">
-            <a href="#">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" class="store-btn">
-            </a>
-            <a href="#">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" class="store-btn">
-            </a>
-        </div>
-    </section>
+        <section id="aliados" class="fade-in">
+            <h2><i class="fas fa-handshake"></i> Nuestros Aliados</h2>
+            <p>Estamos construyendo relaciones con supermercados y tiendas locales para ofrecerte la mejor información.</p>
+            <p><strong>(Próximamente más información)</strong></p>
+            </section>
 
-    <!-- Footer -->
+        <section id="contacto" class="fade-in">
+            <h2><i class="fas fa-envelope"></i> ¡Contáctanos!</h2>
+            <p>¿Te interesa el proyecto? ¿Tienes ideas, sugerencias o quieres colaborar? ¡Nos encantaría escucharte!</p>
+            <div class="contacto-links">
+                 <p><i class="fab fa-github icon-contacto"></i> <strong>GitHub:</strong> <a href="https://github.com/Juan-avila1507/MyPmarkt" target="_blank" rel="noopener noreferrer">Proyecto MyPmarkt</a></p>
+                 </div>
+        </section>
+    </main>
+
     <footer>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
-        <p>© 2025 Pocket Market - Todos los derechos reservados</p>
-    </footer>
+        <p>&copy; <span id="currentYear"></span> Pocket Market. Todos los derechos reservados.</p>
+        </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
