@@ -14,6 +14,8 @@
 
     --accent-blue: #007bff;
     --accent-green: #28a745;
+    --white: #FFFFFF; /* Añadido para el modo oscuro */
+
 
     --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.05);
     --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -208,6 +210,22 @@ a:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
 }
+
+.btn-secondary { /* Nuevo estilo para botón secundario (Gratis) */
+    background-color: transparent;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+    transition: all var(--transition-medium);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-blue);
+    color: var(--primary-bg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
 
 /* --- Header del Sitio --- */
 .site-header {
@@ -482,291 +500,213 @@ body.dark-mode .card-title { /* En modo oscuro, queremos un blanco puro */
     padding-top: 2px;
 }
 
-
-/* --- Sección Aliados --- */
-.partners-section {
-    text-align: center;
-    /* Ya hereda de .section-spacing */
+/* --- Sección de Membresía (Pricing) - Adaptando info-card --- */
+.pricing-section {
+    /* No necesita estilos de grid, ya usa info-grid */
 }
 
-.partners-placeholder {
-    margin-top: var(--spacing-lg);
+/* Estilos específicos para info-card usadas como planes */
+.plan-card {
+    display: flex; /* Para organizar el icono, título, precio y contenido */
+    flex-direction: column;
+    justify-content: space-between; /* Empujar el botón hacia abajo */
+    padding: var(--spacing-lg) var(--spacing-md); /* Ajustar padding */
+    position: relative; /* Para la insignia popular */
+}
+
+.plan-card .card-content { /* Asegura que el contenido ocupe el espacio */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-md);
-    min-height: 150px;
-    background-color: var(--card-bg); /* Usa la variable de fondo de tarjeta */
-    border: 1px dashed rgba(0, 0, 0, 0.15); /* Borde ajustado para ambos modos */
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-lg);
-    transition: background-color var(--transition-medium), border-color var(--transition-medium);
-}
-body.dark-mode .partners-placeholder { /* Borde más claro en modo oscuro */
-    border-color: rgba(255, 255, 255, 0.2);
+    justify-content: space-between;
 }
 
-.loading-spinner {
-    border: 5px solid rgba(0, 0, 0, 0.1); /* Sombra ajustada para ambos modos */
-    border-top: 5px solid var(--accent-blue);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin-top: var(--spacing-md);
-}
-body.dark-mode .loading-spinner { /* Borde más claro en modo oscuro */
-    border-color: rgba(255, 255, 255, 0.2);
+.plan-card .card-icon {
+    margin-bottom: var(--spacing-md);
 }
 
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.plan-card .card-title {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem; /* Hacer el título del plan más grande */
 }
 
-/* --- Sección Contacto --- */
-.contact-section {
-    text-align: center;
-    /* Ya hereda de .section-spacing */
-}
-
-.contact-info {
-    margin-top: var(--spacing-lg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    font-size: 1.15rem;
-    color: var(--secondary-text); /* Usa la variable de texto secundario */
-    transition: color var(--transition-medium);
-}
-
-.contact-icon {
-    font-size: 1.5em;
-    color: var(--highlight-text); /* Usa la variable de texto de resalte */
-    transition: color var(--transition-medium);
-}
-.contact-link {
+.plan-price {
+    font-size: 2.5rem;
     font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: var(--spacing-md); /* Espacio después del precio */
+    transition: color var(--transition-medium);
+    text-align: center; /* Centrar el precio */
+}
+.plan-price .currency {
+    font-size: 1.5rem; /* Ajustar el tamaño del símbolo de moneda */
+    vertical-align: super; /* Para que quede arriba del número */
+    margin-right: -5px; /* Para que quede más pegado al número */
+    color: var(--medium-text); /* Un color más suave para el símbolo */
+}
+.plan-price .amount {
+    font-size: 3.5rem; /* Hacer el número del precio más grande */
+    color: var(--primary-text); /* El color del texto principal para el número */
+    transition: color var(--transition-medium);
+}
+body.dark-mode .plan-price .amount {
+    color: var(--white);
+}
+.plan-price .frequency {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--medium-text);
+    display: block; /* Para que /mes o /año vaya en una nueva línea */
+    margin-top: -5px; /* Ajuste para acercar a la cantidad */
+}
+
+/* Ajustar el feature-list dentro de los planes */
+.plan-card .feature-list {
+    margin-top: var(--spacing-sm); /* Menos margen arriba para la lista de características */
+    margin-bottom: var(--spacing-lg); /* Más espacio antes del botón */
+    flex-grow: 1; /* Permitir que la lista crezca para rellenar el espacio */
+}
+
+.plan-card .feature-list li {
+    font-size: 0.95rem; /* Un poco más pequeño para las características */
+}
+
+.plan-card .btn {
+    width: 100%; /* Botones de los planes al 100% de ancho de la tarjeta */
+    margin-top: auto; /* Empuja el botón al final de la tarjeta */
+}
+
+.plan-note {
+    font-size: 0.85rem;
+    color: var(--medium-text);
+    font-style: italic;
+    margin-top: var(--spacing-sm); /* Espacio entre el botón y la nota */
+}
+
+/* Estilo para el plan destacado (Mensual) */
+.plan-card.featured-plan-card {
+    transform: translateY(-15px) scale(1.03); /* Un poco más de elevación y escala */
+    box-shadow: var(--shadow-hover);
+    border: 2px solid var(--accent-blue); /* Borde de acento para el plan destacado */
+    z-index: 10;
+}
+body.dark-mode .plan-card.featured-plan-card {
+    border-color: var(--highlight-text); /* Borde de acento en modo oscuro */
+}
+
+.plan-card.featured-plan-card .card-icon,
+.plan-card.featured-plan-card .plan-price {
+    color: var(--accent-blue); /* Color de acento para ícono y precio en el destacado */
+}
+body.dark-mode .plan-card.featured-plan-card .card-icon,
+body.dark-mode .plan-card.featured-plan-card .plan-price {
+    color: var(--highlight-text); /* Color de acento en modo oscuro */
+}
+
+/* Insignia de "Popular" */
+.popular-badge {
+    position: absolute;
+    top: var(--spacing-md); /* Ajustar posición para que no choque con el icono */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-blue);
+    color: var(--primary-bg);
+    padding: var(--spacing-xxs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2);
+    transition: background-color var(--transition-medium);
+}
+body.dark-mode .popular-badge {
+    background-color: var(--highlight-text);
+    color: var(--primary-bg);
+    box-shadow: 0 2px 10px rgba(124, 221, 255, 0.2);
 }
 
 
+/* Indicador de Ahorro en el Plan Anual */
+.save-indicator {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent-green);
+    font-weight: bold;
+    margin-top: var(--spacing-xs);
+}
+
+/* --- Media Queries para la sección de membresía --- */
+@media (max-width: 992px) {
+    .plan-card.featured-plan-card {
+        transform: translateY(-10px) scale(1.02); /* Menos elevación en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .info-grid {
+        gap: var(--spacing-md); /* Reducir el gap en móviles */
+    }
+    .plan-card.featured-plan-card {
+        transform: scale(1.0); /* Volver al tamaño normal en pantallas pequeñas */
+        border: 1px solid rgba(0, 0, 0, 0.05); /* Eliminar el borde de acento en móvil */
+    }
+    body.dark-mode .plan-card.featured-plan-card {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+    .plan-card .card-title {
+        font-size: 1.6rem;
+    }
+    .plan-price .amount {
+        font-size: 3rem;
+    }
+}
 /* --- Footer del Sitio --- */
 .site-footer {
-    background-color: var(--footer-bg); /* Usa la variable de fondo del footer */
-    color: var(--primary-text); /* Usa la variable de texto principal */
+    background-color: var(--footer-bg);
+    color: var(--white); /* ¡CAMBIO AQUÍ! Ahora el texto del footer siempre será blanco */
     padding: var(--spacing-lg) 0;
-    margin-top: var(--spacing-xxl);
-    font-size: 0.9rem;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); /* Sombra ajustada */
-    transition: background-color var(--transition-medium), color var(--transition-medium), box-shadow var(--transition-medium);
+    text-align: center;
+    transition: background-color var(--transition-medium), color var(--transition-medium);
+    margin-top: var(--spacing-xl);
+    border-top-left-radius: var(--border-radius-md);
+    border-top-right-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
 }
-body.dark-mode .site-footer { /* Sombra más pronunciada en modo oscuro */
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
-}
-
 
 .footer-inner {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
-    text-align: center;
+    gap: var(--spacing-sm);
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.95rem;
 }
 
 .footer-links {
     display: flex;
     gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .footer-link {
-    color: var(--medium-text); /* Usa la variable de texto medio */
+    color: var(--medium-text); /* Este color se mantiene, será un gris medio en ambos modos */
+    font-size: 0.9rem;
     transition: color var(--transition-fast);
 }
+
 .footer-link:hover {
-    color: var(--primary-text); /* Más claro al hover */
+    color: var(--highlight-text);
     transform: translateY(0);
 }
 
-/* --- Animación Fade-in (general) --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 992px) {
-    .header-inner {
-        flex-direction: column;
-        align-items: center;
-    }
-    .main-nav .nav-list {
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-sm);
-        justify-content: center;
-    }
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .hero-text {
-        padding-right: 0;
-    }
-    .hero-image-carousel {
-        margin-top: var(--spacing-lg);
-        width: 100%;
-        max-width: 500px;
-    }
-    .carousel-img {
-        flex: 0 0 250px;
-        height: 200px;
-    }
-    .carousel-track {
-        width: calc(250px * 8);
-    }
-    @keyframes carouselScroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-250px * 4)); }
-    }
-    .info-grid {
-        gap: var(--spacing-lg);
-    }
-    .info-card {
-        padding: var(--spacing-lg);
-    }
-    .card-icon {
-        font-size: 2.5rem;
-    }
-    .card-title {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    h1 { font-size: clamp(2rem, 7vw, 3.5rem); }
-    h2 { font-size: clamp(1.8rem, 5.5vw, 2.8rem); }
-    h3 { font-size: clamp(1.4rem, 4.5vw, 2rem); }
-    
-    .section-spacing {
-        padding-top: var(--spacing-xl);
-        padding-bottom: var(--spacing-xl);
-    }
-    .main-nav .nav-list {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-    .nav-link {
-        font-size: 1rem;
-        padding: var(--spacing-xs);
-    }
-    .hero-section {
-        padding-top: var(--spacing-xl);
-        padding-bottom: var(--spacing-xl);
-    }
-    .carousel-img {
-        flex: 0 0 220px;
-        height: 180px;
-    }
-    .carousel-track {
-        width: calc(220px * 8);
-    }
-    @keyframes carouselScroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-220px * 4)); }
-    }
-    .info-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-    .info-card {
-        padding: var(--spacing-md);
-    }
-    .card-icon {
-        font-size: 2rem;
-    }
-    .card-title {
-        font-size: 1.3rem;
-    }
-    .feature-list {
-        margin-top: var(--spacing-md);
-    }
+/* Media Query para el footer en pantallas grandes */
+@media (min-width: 768px) {
     .footer-inner {
-        flex-direction: column;
-        gap: var(--spacing-md);
-    }
-    .footer-links {
-        flex-direction: column;
-        gap: var(--spacing-xs);
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-    .site-logo {
-        font-size: 1.5rem;
-    }
-    .logo-image {
-        height: 40px;
-    }
-    .hero-title {
-        font-size: clamp(1.8rem, 8vw, 3rem);
-    }
-    .hero-subtitle {
-        font-size: clamp(1rem, 4vw, 1.5rem);
-    }
-    .hero-description {
-        font-size: 0.95rem;
-    }
-    .btn {
-        padding: var(--spacing-xs) var(--spacing-md);
-        font-size: 0.9rem;
-    }
-    .carousel-img {
-        flex: 0 0 180px;
-        height: 150px;
-    }
-    .carousel-track {
-        width: calc(180px * 8);
-    }
-    @keyframes carouselScroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-180px * 4)); }
-    }
-    .section-heading {
-        font-size: 1.5rem;
-        margin-bottom: var(--spacing-lg);
-    }
-    .section-intro, .section-description {
-        font-size: 0.95rem;
-    }
-    .info-card {
-        padding: var(--spacing-sm);
-    }
-    .card-title {
-        font-size: 1.2rem;
-    }
-    .contact-item {
-        font-size: 1rem;
-    }
-    .contact-icon {
-        font-size: 1.2em;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
