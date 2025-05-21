@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="fondo.css"> </head>
+    <link rel="stylesheet" href="fondo.css">
+</head>
+
 <body class="light-mode"> 
     <header class="site-header">
     <div class="container header-inner">
@@ -28,17 +30,18 @@
                 <li><a href="#membresia" class="nav-link">Membresía</a></li>
                 <li><a href="#aliados" class="nav-link">Aliados</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle nav-link" aria-label="Alternar modo oscuro/claro">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </nav>
-        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú de navegación">
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
             <i class="fas fa-bars"></i>
-        </button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar modo oscuro/claro">
-            <i class="fas fa-moon"></i>
         </button>
     </div>
     </header>
-
     <main>
         <section id="inicio" class="hero-section section-spacing fade-in" aria-labelledby="hero-heading">
             <div class="container hero-content">
