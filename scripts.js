@@ -1,114 +1,114 @@
-/* --- Smooth Scroll --- */
-function scrollToSection(id) {
-    const element = document.getElementById(id);
-    if (element) {
-        // Considerar el alto del header fijo si existe y es opaco
-        const headerOffset = document.querySelector('header')?.offsetHeight || 0;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 15; // 15px extra de espacio
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    } else {
-        console.warn(`Element with ID "${id}" not found.`);
-    }
-}
-
-
-/* --- Carrusel Automático (Control Básico y Preparación para Futuro) --- */
-const slider = document.querySelector('.slider-imagenes');
-
-// Pausar animación CSS al pasar el ratón (ya hecho en CSS con :hover)
-// Si quisieras controles más complejos (botones, etc.), los añadirías aquí.
-// Ejemplo:
-// const prevBtn = document.getElementById('prevBtn');
-// const nextBtn = document.getElementById('nextBtn');
-// let currentIndex = 0;
-// const slides = document.querySelectorAll('.slide');
-// const totalSlides = slides.length;
-// const slideWidth = slides[0]?.offsetWidth; // Obtener ancho del slide dinámicamente
-
-// function updateCarousel() {
-//     if (slider && slideWidth) {
-//        slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-//        slider.style.transition = 'transform 0.5s ease-in-out'; // Añadir transición JS si controlas el movimiento aquí
-//     }
-// }
-
-// nextBtn?.addEventListener('click', () => {
-//      currentIndex = (currentIndex + 1) % totalSlides; // Simple loop
-//      updateCarousel();
-// });
-
-// prevBtn?.addEventListener('click', () => {
-//      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Simple loop
-//      updateCarousel();
-// });
-
-// Auto-play con JS (alternativa a la animación CSS pura):
-/*
-let autoPlayInterval;
-function startAutoPlay() {
-     autoPlayInterval = setInterval(() => {
-         currentIndex = (currentIndex + 1) % totalSlides;
-         updateCarousel();
-     }, 4000); // Cambiar cada 4 segundos
-}
-function stopAutoPlay() {
-     clearInterval(autoPlayInterval);
-}
-slider?.addEventListener('mouseenter', stopAutoPlay);
-slider?.addEventListener('mouseleave', startAutoPlay);
-startAutoPlay(); // Iniciar al cargar
-*/
-
-
-/* --- Animaciones de Entrada al Hacer Scroll (Fade-in) --- */
 document.addEventListener('DOMContentLoaded', () => {
-    const fadeElems = document.querySelectorAll('.fade-in');
-
-    const observerOptions = {
-        root: null, // Relativo al viewport
-        rootMargin: '0px',
-        threshold: 0.1 // Se activa cuando al menos el 10% del elemento es visible
+    // Función para scroll suave a secciones
+    const smoothScroll = (event) => {
+        event.preventDefault();
+        const targetId = event.currentTarget.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - (document.querySelector('.site-header')?.offsetHeight || 0),
+                behavior: 'smooth'
+            });
+        }
     };
 
-    const observerCallback = (entries, observer) => {
+    // Asignar scroll suave a todos los enlaces de navegación
+    document.querySelectorAll('.main-nav a, .site-logo, .btn-primary').forEach(link => {
+        link.addEventListener('click', smoothScroll);
+    });
+
+    // Animación Fade-in al hacer scroll
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -80px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Opcional: Dejar de observar una vez que la animación ocurrió
-                // observer.unobserve(entry.target);
-            } else {
-                 // Opcional: Remover la clase si sale de vista (para re-animar al volver a scrollear)
-                 // entry.target.classList.remove('visible');
+                observer.unobserve(entry.target);
             }
         });
-    };
+    }, appearOptions);
 
-    const fadeInObserver = new IntersectionObserver(observerCallback, observerOptions);
-
-    fadeElems.forEach(elem => {
-        fadeInObserver.observe(elem);
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
     });
 
-
-    /* --- Actualizar año en Footer --- */
-    const yearSpan = document.getElementById('currentYear');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+    // Actualizar el año en el footer
+    const currentYearSpan = document.getElementById('currentYear');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
     }
 
-     /* --- Opcional: Cambiar estilo del header al hacer scroll --- */
-    // const header = document.querySelector('header');
-    // window.addEventListener('scroll', () => {
-    //    if (window.scrollY > 50) { // Si se scrollea más de 50px
-    //        document.body.classList.add('scrolled');
-    //    } else {
-    //        document.body.classList.remove('scrolled');
-    //    }
-    // });
+    // --- Lógica de Modo Oscuro/Claro ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
-}); // Fin de DOMContentLoaded
+    // Función para aplicar el tema
+    const applyTheme = (theme) => {
+        if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Sol para cambiar a claro
+            themeToggle.setAttribute('aria-label', 'Cambiar a modo claro');
+        } else { // light mode
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Luna para cambiar a oscuro
+            themeToggle.setAttribute('aria-label', 'Cambiar a modo oscuro');
+        }
+    };
+
+    // 1. Cargar el tema guardado en localStorage o usar la preferencia del sistema
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+        applyTheme(savedTheme); // Aplicar el tema guardado
+    } else {
+        // CAMBIO CLAVE AQUÍ: Si no hay tema guardado, aplicamos 'light' por defecto
+        // Y luego verificamos la preferencia del sistema para el icono inicial
+        applyTheme('light');
+        if (prefersDarkMode.matches) {
+            // Si el sistema prefiere oscuro, mostramos el sol, pero la página estará en claro
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            // Si el sistema prefiere claro, mostramos la luna
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    }
+
+
+    // 2. Escuchar cambios en la preferencia del sistema (si el usuario cambia en la configuración de su OS)
+    prefersDarkMode.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) { // Solo si el usuario NO ha forzado un tema manualmente
+            // Aquí decidiríamos si seguir la preferencia del sistema,
+            // pero como el usuario quiere CLARO por defecto, esta parte se comporta diferente.
+            // Si no hay tema guardado, la página siempre inicia en claro,
+            // pero el ícono del botón debe reflejar si el sistema sugiere oscuro.
+            applyTheme('light'); // La página permanece en claro
+            if (e.matches) { // Si el sistema cambia a oscuro
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Muestra sol (para cambiar a claro)
+            } else { // Si el sistema cambia a claro
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Muestra luna (para cambiar a oscuro)
+            }
+        }
+    });
+
+    // 3. Alternar tema al hacer click en el botón
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                applyTheme('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                applyTheme('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+});

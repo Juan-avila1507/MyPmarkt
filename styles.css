@@ -1,379 +1,603 @@
-/* --- Variables CSS --- */
+/* --- Variables CSS (Definición global, valores por defecto para light mode) --- */
 :root {
-    --primary-color: #073B5C; /* Azul oscuro */
-    --secondary-color: #4CAF50; /* Verde */
-    --accent-color: #FFB400; /* Amarillo/Naranja para estrellas/acentos */
-    --light-bg: #f8f9fa; /* Fondo claro para secciones */
-    --dark-text: #333;
-    --light-text: #ffffff;
-    --border-radius: 10px;
-    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --transition-speed: 0.4s;
+    /* Modo Claro (Default) */
+    --primary-bg: #FFFFFF; /* Blanco para fondos principales */
+    --secondary-bg: #F4F5F7; /* Gris muy claro para secciones */
+    --card-bg: #FFFFFF; /* Blanco para tarjetas */
+    --header-bg: rgba(255, 255, 255, 0.98); /* Blanco translúcido para header */
+    --footer-bg: #0A0A0A; /* Negro profundo para footer */
+
+    --primary-text: #0A0A0A; /* Negro profundo para texto principal */
+    --secondary-text: #343A40; /* Gris oscuro para texto secundario */
+    --medium-text: #6C757D; /* Gris medio para descripciones */
+    --highlight-text: #007bff; /* Azul vibrante para resaltes y enlaces */
+
+    --accent-blue: #007bff;
+    --accent-green: #28a745;
+
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 5px 20px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+    /* Tipografía: Elegante para títulos, legible para cuerpo */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    --font-size-base: 1rem; /* 16px */
+
+    /* Espaciado: Sistema modular para consistencia */
+    --spacing-xxs: 0.25rem; /* 4px */
+    --spacing-xs: 0.5rem;   /* 8px */
+    --spacing-sm: 1rem;     /* 16px */
+    --spacing-md: 1.5rem;   /* 24px */
+    --spacing-lg: 2.5rem;   /* 40px */
+    --spacing-xl: 4rem;     /* 64px */
+    --spacing-xxl: 6rem;    /* 96px */
+
+    /* Bordes y Transiciones */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --transition-fast: 0.2s ease-out;
+    --transition-medium: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease;
 }
 
-/* --- Estilos Globales --- */
+/* --- Modo Oscuro: Sobrescribe las variables --- */
+body.dark-mode {
+    --primary-bg: #071E26; /* Azul muy oscuro, casi negro, para fondos principales */
+    --secondary-bg: rgba(26, 43, 52, 0.9); /* Gris azulado oscuro para secciones */
+    --card-bg: #071E26; /* Azul muy oscuro para tarjetas */
+    --header-bg: rgba(7, 30, 38, 0.95); /* Fondo oscuro translúcido para header */
+    --footer-bg: #071E26; /* Azul muy oscuro para footer */
+
+    --primary-text: #E0E6EB; /* Gris muy claro para texto principal */
+    --secondary-text: #A9B3BB; /* Gris medio para texto secundario */
+    --medium-text: #A9B3BB; /* Gris medio para descripciones */
+    --highlight-text: #7CDDFF; /* Azul claro vibrante para resaltes y enlaces */
+
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+
+/* --- Estilos Globales y Reset Ligeros --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     scroll-behavior: smooth;
-    font-size: 16px; /* Base font size */
+    font-size: var(--font-size-base);
 }
 
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff; /* Fondo base blanco */
-    color: var(--dark-text);
+    font-family: var(--font-body);
+    color: var(--primary-text); /* Usa la variable de texto principal */
     line-height: 1.6;
+    overflow-x: hidden;
+    /* IMPORTANTE: El background-color principal del body se gestiona en fondo.css */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color var(--transition-medium), color var(--transition-medium); /* Suave transición de colores */
 }
 
+/* Ocultar para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Tipografía de Encabezados */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-top: 0;
+    font-family: var(--font-heading);
+    color: var(--primary-text); /* Usa la variable de texto principal */
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    transition: color var(--transition-medium);
 }
 
-h2 { /* Títulos de sección */
-    font-size: 2rem;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--secondary-color);
-    display: inline-block; /* Para que el borde no ocupe todo el ancho */
-}
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; }
+h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 700; }
+h3 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; }
 
-h3 {
-     font-size: 1.4rem;
-     font-weight: 600;
-     margin-bottom: 10px;
+p {
+    margin-bottom: var(--spacing-sm);
 }
 
 a {
-    color: var(--secondary-color);
+    color: var(--highlight-text); /* Usa la variable de texto de resalte */
     text-decoration: none;
-    transition: color var(--transition-speed) ease;
+    transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 a:hover {
-    color: #45a049; /* Verde más oscuro al pasar el ratón */
-    text-decoration: underline;
+    color: var(--primary-text); /* Al hover, va al color de texto principal */
+    transform: translateY(-2px);
 }
 
-ul {
-    list-style: none;
-    padding-left: 0;
+/* --- Reutilizables / Componentes Base --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
-ul li {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
+.section-spacing {
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+    background-color: var(--secondary-bg); /* Usa la variable de fondo secundario */
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    transition: background-color var(--transition-medium), box-shadow var(--transition-medium), backdrop-filter var(--transition-medium);
+}
+.section-spacing:last-of-type {
+    margin-bottom: 0;
 }
 
-.list-icon {
-    color: var(--secondary-color);
-    margin-right: 10px;
-    font-size: 1.1em; /* Tamaño del icono de lista */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    padding-bottom: var(--spacing-md);
+}
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-blue); /* Usa la variable de acento */
+    margin: var(--spacing-sm) auto 0 auto;
+    border-radius: var(--border-radius-sm);
+    transition: background-color var(--transition-medium);
 }
 
-/* --- Header --- */
-header {
+.section-intro, .section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg) auto;
+    font-size: 1.15rem;
+    color: var(--medium-text); /* Usa la variable de texto medio */
+    transition: color var(--transition-medium);
+}
+
+.text-highlight {
+    color: var(--highlight-text); /* Usa la variable de texto de resalte */
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: color var(--transition-medium);
+}
+
+/* Botones (Clase genérica) */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue); /* Usa la variable de acento */
+    color: var(--primary-bg); /* Color de texto del botón, que será blanco en oscuro y primary-text en claro */
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    transition: background-color var(--transition-medium), border-color var(--transition-medium), box-shadow var(--transition-medium), color var(--transition-medium);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-text); /* Ahora el hover cambiará al color de texto principal */
+    border-color: var(--primary-text);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* --- Header del Sitio --- */
+.site-header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
-    backdrop-filter: blur(5px); /* Efecto blur para navegadores compatibles */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color var(--transition-speed) ease;
+    background-color: var(--header-bg); /* Usa la variable de fondo del header */
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-light);
+    padding: var(--spacing-md) 0;
+    transition: background-color var(--transition-medium), backdrop-filter var(--transition-medium), box-shadow var(--transition-medium);
 }
 
-/* Opcional: Cambiar fondo del header al hacer scroll
-body.scrolled header {
-     background-color: rgba(255, 255, 255, 1);
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-} */
-
-.dividor-contenedor {
-    max-width: 1200px; /* Ancho máximo más estándar */
-    margin: 0 auto;
-    padding: 0 20px; /* Padding lateral */
-}
-
-.titulo-bloque {
-    background-color: var(--primary-color);
-    padding: 10px 25px; /* Ajuste de padding */
+.header-inner {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    border-radius: var(--border-radius);
-    margin: 15px auto 5px auto; /* Margen ajustado */
-    max-width: 95%; /* Ajuste de ancho máximo */
-    box-shadow: var(--box-shadow);
-    border-left: none; /* Eliminada la barra verde izquierda aquí */
-}
-
-.logo-container img {
-    height: 55px; /* Tamaño ajustado */
-    width: auto; /* Ancho automático para mantener proporción */
-    border-radius: 5px;
-    vertical-align: middle; /* Alineación vertical */
-}
-
-.titulo-con-estrellas {
-    display: flex;
     align-items: center;
-    gap: 15px; /* Espacio aumentado */
-    flex-grow: 1;
-    justify-content: center;
-}
-
-.titulo-texto {
-    font-weight: 700;
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Tamaño de fuente adaptable */
-    color: var(--light-text);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Sombra de texto sutil */
-}
-
-.estrella {
-    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Tamaño adaptable */
-    color: var(--accent-color);
-}
-
-.menu-botones {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Espacio ajustado */
+    gap: var(--spacing-md);
     flex-wrap: wrap;
-    padding: 10px 0 15px 0; /* Padding vertical */
-    background-color: transparent; /* Sin fondo explícito */
 }
 
-.menu-botones button {
-    padding: 10px 20px; /* Padding aumentado */
-    border: 2px solid transparent; /* Borde transparente inicial */
-    border-radius: 25px; /* Botones más redondeados */
-    background-color: var(--secondary-color);
-    color: var(--light-text);
-    font-weight: 600; /* Peso de fuente ajustado */
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all var(--transition-speed) ease; /* Transición para todos los cambios */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.menu-botones button:hover,
-.menu-botones button:focus { /* Añadido :focus para accesibilidad */
-    background-color: #45a049; /* Verde más oscuro */
-    color: var(--light-text);
-    border-color: var(--accent-color); /* Borde de acento al pasar el ratón */
-    transform: translateY(-2px); /* Efecto ligero de elevación */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    outline: none; /* Quitar outline por defecto en focus */
-}
-
-/* --- Secciones --- */
-main {
-    padding-top: 20px; /* Espacio después del header fijo */
-}
-
-section {
-    padding: 60px 5%; /* Padding vertical y horizontal en % */
-    max-width: 1100px; /* Ancho máximo de contenido */
-    margin: 40px auto; /* Margen entre secciones */
-    background-color: var(--light-bg); /* Fondo claro para secciones */
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    overflow: hidden; /* Para contener elementos flotantes o con márgenes */
-}
-
-/* Alternar fondo de secciones (opcional) */
-section:nth-of-type(even) {
-     background-color: #ffffff; /* Fondo blanco para secciones pares */
-}
-
-
-/* --- Cuadro Bienvenida --- */
-.cuadro-bienvenida {
-    background: linear-gradient(135deg, var(--primary-color), #0a5a8a); /* Gradiente sutil */
-    padding: 30px 40px;
-    display: flex;
-    flex-direction: column; /* Apilado por defecto */
-    gap: 20px;
-    border-radius: var(--border-radius);
-    color: var(--light-text);
-    margin-bottom: 30px; /* Espacio antes del carrusel */
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.2); /* Sombra interior */
-}
-
-.texto1-cuadro-bienvenida {
-    font-weight: 700;
-    font-size: clamp(1.8rem, 5vw, 2.2rem);
+.site-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--spacing-sm);
+    color: var(--primary-text); /* Usa la variable de texto principal */
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform var(--transition-fast), color var(--transition-medium);
+}
+.site-logo:hover {
+    transform: scale(1.02);
 }
 
-.texto2-cuadro-bienvenida {
-    font-weight: 300;
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    max-width: 800px; /* Limitar ancho del texto */
+.logo-image {
+    height: 50px;
+    border-radius: var(--border-radius-sm);
 }
 
-/* En pantallas más grandes, poner textos lado a lado */
-@media (min-width: 768px) {
-    .cuadro-bienvenida {
-        flex-direction: row;
-        align-items: center;
-    }
-    .texto1-cuadro-bienvenida {
-        flex: 1;
-        text-align: left;
-    }
-    .texto2-cuadro-bienvenida {
-        flex: 2;
-    }
-}
-
-
-/* --- Carrusel de Imágenes --- */
-.carrusel-container {
-    position: relative;
-    width: 100%;
-    max-width: 900px; /* Ancho máximo del carrusel */
-    margin: 30px auto;
-    overflow: hidden; /* Oculta lo que se sale del contenedor */
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
-
-.slider-wrapper {
-    width: 100%;
-    overflow: hidden; /* Oculta el desbordamiento del slider interno */
-}
-
-.slider-imagenes {
+.main-nav .nav-list {
     display: flex;
-    /* La animación moverá este contenedor */
-    /* El ancho debe ser la suma de anchos de todos los slides */
-    width: calc(300px * 5); /* (Ancho slide) * (Número de slides) - Ajusta si añades/quitas imgs */
-    animation: scroll 20s linear infinite; /* Duración = 4s por imagen * 5 imágenes */
-    /* Pausar animación al pasar el ratón */
+    list-style: none;
+    gap: var(--spacing-lg);
 }
 
-.slider-imagenes:hover {
+.nav-link {
+    font-weight: 700;
+    color: var(--secondary-text); /* Usa la variable de texto secundario */
+    font-size: 1.05rem;
+    position: relative;
+    padding: var(--spacing-xs) 0;
+    transition: color var(--transition-medium);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-blue);
+    transition: width var(--transition-fast) ease-out, background-color var(--transition-medium);
+}
+.nav-link:hover::after, .nav-link:focus::after {
+    width: 100%;
+}
+.nav-link:focus {
+    outline: 2px dashed var(--accent-blue);
+    outline-offset: 4px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--secondary-text); /* Color del ícono según el tema */
+    transition: color var(--transition-fast);
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius-sm);
+    outline-offset: 4px;
+}
+
+.theme-toggle:hover {
+    color: var(--highlight-text); /* Color de resalte al hover */
+}
+.theme-toggle:focus {
+    outline: 2px dashed var(--highlight-text);
+}
+
+
+/* --- Sección Hero (Inicio) --- */
+.hero-section {
+    background-color: var(--secondary-bg); /* Usa la variable de fondo secundario */
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+    margin-top: var(--spacing-xl);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    transition: background-color var(--transition-medium), backdrop-filter var(--transition-medium);
+}
+
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+    padding-right: var(--spacing-md);
+}
+
+.hero-title {
+    color: var(--primary-text); /* Usa la variable de texto principal (cambiará según el modo) */
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.2); /* Sombra ajustada para ambos modos */
+    transition: color var(--transition-medium);
+}
+body.dark-mode .hero-title { /* En modo oscuro, queremos un blanco puro */
+    color: var(--white);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: var(--highlight-text); /* Usa la variable de texto de resalte */
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    transition: color var(--transition-medium);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--medium-text); /* Usa la variable de texto medio */
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    transition: color var(--transition-medium);
+}
+
+.hero-image-carousel {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    padding: var(--spacing-sm);
+    background-color: var(--card-bg); /* Usa la variable de fondo de tarjeta */
+    transition: background-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.carousel-track {
+    display: flex;
+    width: calc(300px * 8);
+    animation: carouselScroll 25s linear infinite;
+    will-change: transform;
+}
+.carousel-track:hover {
     animation-play-state: paused;
 }
 
-@keyframes scroll {
+.carousel-img {
+    flex: 0 0 300px;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-light);
+    margin: 0 var(--spacing-sm);
+    transition: transform var(--transition-fast);
+}
+.carousel-img:hover {
+    transform: scale(1.02);
+}
+
+@keyframes carouselScroll {
     0% { transform: translateX(0); }
-    /* Moverse hasta el punto antes de que la última imagen duplicada se muestre */
-    100% { transform: translateX(calc(-300px * 4)); } /* -(Ancho slide) * (Número de slides ORIGINALES) */
-}
-
-.slide {
-    flex: 0 0 300px; /* No crecer, no encoger, base de 300px */
-    padding: 0 10px; /* Espacio entre imágenes */
-    box-sizing: border-box; /* Incluir padding en el ancho */
-}
-
-.slide img {
-    width: 100%; /* Hacer la imagen llenar el div .slide */
-    height: 200px; /* Altura fija para consistencia */
-    object-fit: cover; /* Cubrir el espacio sin distorsionar */
-    border-radius: var(--border-radius);
-    display: block; /* Evitar espacio extra debajo de la imagen */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.slide img:hover {
-     transform: scale(1.03); /* Zoom ligero al pasar el ratón */
-     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    100% { transform: translateX(calc(-300px * 4)); }
 }
 
 
-/* --- Cuadro Informativo --- */
-.cuadro-informativo {
-    background-color: transparent; /* Quitar fondo anterior, la sección ya tiene */
-    padding: 0; /* Quitar padding anterior */
+/* --- Sección Información (Grid de Tarjetas) --- */
+.info-section {
+    /* Ya hereda de .section-spacing */
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+}
+
+.info-card {
+    background-color: var(--card-bg); /* Usa la variable de fondo de tarjeta */
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium), background-color var(--transition-medium);
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil, ajuste para ambos modos */
+}
+body.dark-mode .info-card { /* Borde más claro en modo oscuro */
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: var(--accent-blue); /* Usa la variable de acento */
+    margin-bottom: var(--spacing-md);
+    display: block;
+    transition: color var(--transition-fast);
+}
+.info-card:hover .card-icon {
+    color: var(--highlight-text); /* Cambio de color en el hover */
+}
+
+.card-title {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.6rem;
+    color: var(--primary-text); /* Usa la variable de texto principal */
+    transition: color var(--transition-medium);
+}
+body.dark-mode .card-title { /* En modo oscuro, queremos un blanco puro */
+    color: var(--white);
+}
+
+.card-content p {
+    font-size: 1.05rem;
+    color: var(--medium-text); /* Usa la variable de texto medio */
+    margin-bottom: var(--spacing-sm);
+    transition: color var(--transition-medium);
+}
+.card-content p:last-child {
+    margin-bottom: 0;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: var(--spacing-md);
+}
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1rem;
+    color: var(--secondary-text); /* Usa la variable de texto secundario */
+    transition: color var(--transition-medium);
+}
+.feature-icon {
+    color: var(--accent-green);
+    font-size: 1.1em;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+
+/* --- Sección Aliados --- */
+.partners-section {
+    text-align: center;
+    /* Ya hereda de .section-spacing */
+}
+
+.partners-placeholder {
+    margin-top: var(--spacing-lg);
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Espacio entre items */
-    border-left: none; /* Quitar borde izquierdo anterior */
-    border-radius: 0;
-}
-
-.info-item {
-    background-color: #ffffff; /* Fondo blanco para cada item */
-    padding: 25px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
-    border-left: 5px solid var(--secondary-color); /* Borde izquierdo verde */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.texto1-cuadro-informativo { /* Ahora es h3 */
-    color: var(--primary-color);
-    display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 15px; /* Más espacio después del título */
+    justify-content: center;
+    gap: var(--spacing-md);
+    min-height: 150px;
+    background-color: var(--card-bg); /* Usa la variable de fondo de tarjeta */
+    border: 1px dashed rgba(0, 0, 0, 0.15); /* Borde ajustado para ambos modos */
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    transition: background-color var(--transition-medium), border-color var(--transition-medium);
+}
+body.dark-mode .partners-placeholder { /* Borde más claro en modo oscuro */
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.icon-info {
-    color: var(--secondary-color);
-    font-size: 1.2em; /* Iconos un poco más grandes */
+.loading-spinner {
+    border: 5px solid rgba(0, 0, 0, 0.1); /* Sombra ajustada para ambos modos */
+    border-top: 5px solid var(--accent-blue);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-top: var(--spacing-md);
 }
-
-.texto2-cuadro-informativo {
-    color: var(--dark-text);
-    font-size: 1rem;
-    padding-left: 0; /* Quitar padding izquierdo anterior */
-    border-left: none; /* Quitar borde izquierdo anterior */
-}
-
-.texto2-cuadro-informativo p:last-child {
-    margin-bottom: 0; /* Evitar doble margen al final */
-}
-
-/* --- Contacto --- */
-#contacto .contacto-links {
-    margin-top: 20px;
-}
-
-#contacto p {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-.icon-contacto {
-    color: var(--primary-color);
-    font-size: 1.5em;
+body.dark-mode .loading-spinner { /* Borde más claro en modo oscuro */
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 
-/* --- Footer --- */
-footer {
-    background-color: var(--primary-color);
-    color: var(--light-text);
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Sección Contacto --- */
+.contact-section {
     text-align: center;
-    padding: 20px;
-    margin-top: 40px; /* Espacio antes del footer */
+    /* Ya hereda de .section-spacing */
+}
+
+.contact-info {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 1.15rem;
+    color: var(--secondary-text); /* Usa la variable de texto secundario */
+    transition: color var(--transition-medium);
+}
+
+.contact-icon {
+    font-size: 1.5em;
+    color: var(--highlight-text); /* Usa la variable de texto de resalte */
+    transition: color var(--transition-medium);
+}
+.contact-link {
+    font-weight: 700;
+}
+
+
+/* --- Footer del Sitio --- */
+.site-footer {
+    background-color: var(--footer-bg); /* Usa la variable de fondo del footer */
+    color: var(--primary-text); /* Usa la variable de texto principal */
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-xxl);
     font-size: 0.9rem;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); /* Sombra ajustada */
+    transition: background-color var(--transition-medium), color var(--transition-medium), box-shadow var(--transition-medium);
+}
+body.dark-mode .site-footer { /* Sombra más pronunciada en modo oscuro */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
 }
 
-footer a {
-    color: var(--accent-color);
-}
-footer a:hover {
-    color: var(--light-text);
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    text-align: center;
 }
 
-/* --- Animación Fade-in --- */
+.footer-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.footer-link {
+    color: var(--medium-text); /* Usa la variable de texto medio */
+    transition: color var(--transition-fast);
+}
+.footer-link:hover {
+    color: var(--primary-text); /* Más claro al hover */
+    transform: translateY(0);
+}
+
+/* --- Animación Fade-in (general) --- */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -385,84 +609,164 @@ footer a:hover {
     transform: translateY(0);
 }
 
+
 /* --- Media Queries para Responsividad --- */
+@media (max-width: 992px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-nav .nav-list {
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-sm);
+        justify-content: center;
+    }
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text {
+        padding-right: 0;
+    }
+    .hero-image-carousel {
+        margin-top: var(--spacing-lg);
+        width: 100%;
+        max-width: 500px;
+    }
+    .carousel-img {
+        flex: 0 0 250px;
+        height: 200px;
+    }
+    .carousel-track {
+        width: calc(250px * 8);
+    }
+    @keyframes carouselScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-250px * 4)); }
+    }
+    .info-grid {
+        gap: var(--spacing-lg);
+    }
+    .info-card {
+        padding: var(--spacing-lg);
+    }
+    .card-icon {
+        font-size: 2.5rem;
+    }
+    .card-title {
+        font-size: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
-    h2 {
-        font-size: 1.8rem;
+    h1 { font-size: clamp(2rem, 7vw, 3.5rem); }
+    h2 { font-size: clamp(1.8rem, 5.5vw, 2.8rem); }
+    h3 { font-size: clamp(1.4rem, 4.5vw, 2rem); }
+    
+    .section-spacing {
+        padding-top: var(--spacing-xl);
+        padding-bottom: var(--spacing-xl);
     }
-    .titulo-texto {
-        font-size: 1.5rem; /* Reducir tamaño en móviles */
+    .main-nav .nav-list {
+        flex-direction: column;
+        gap: var(--spacing-sm);
     }
-    .estrella {
-        font-size: 1.2rem;
-    }
-    .menu-botones {
-        gap: 10px;
-    }
-    .menu-botones button {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-    section {
-        padding: 40px 5%;
-        margin: 20px auto;
-    }
-    .cuadro-bienvenida {
-        padding: 20px;
-    }
-    .texto1-cuadro-bienvenida {
-        font-size: 1.6rem;
-    }
-    .texto2-cuadro-bienvenida {
+    .nav-link {
         font-size: 1rem;
+        padding: var(--spacing-xs);
     }
-
-    /* Ajustar carrusel para móviles (quizás mostrar menos items o reducir tamaño) */
-     .slide {
-        flex: 0 0 250px; /* Más pequeño en móviles */
+    .hero-section {
+        padding-top: var(--spacing-xl);
+        padding-bottom: var(--spacing-xl);
     }
-     .slider-imagenes {
-         /* Recalcular ancho total y animación */
-         width: calc(250px * 5); /* Ajusta si cambias número de slides */
-         animation-name: scroll-mobile; /* Usar animación diferente si es necesario */
+    .carousel-img {
+        flex: 0 0 220px;
+        height: 180px;
     }
-     /* Ajustar keyframes si el ancho cambió */
-    @keyframes scroll-mobile {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-250px * 4)); } /* Ajustar al nuevo ancho */
+    .carousel-track {
+        width: calc(220px * 8);
     }
-
+    @keyframes carouselScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-220px * 4)); }
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    .info-card {
+        padding: var(--spacing-md);
+    }
+    .card-icon {
+        font-size: 2rem;
+    }
+    .card-title {
+        font-size: 1.3rem;
+    }
+    .feature-list {
+        margin-top: var(--spacing-md);
+    }
+    .footer-inner {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
 }
 
 @media (max-width: 480px) {
-    .titulo-bloque {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-        padding: 15px;
+    .container {
+        padding: 0 var(--spacing-sm);
     }
-     .logo-container img {
-        height: 45px;
+    .site-logo {
+        font-size: 1.5rem;
     }
-    .titulo-texto {
-        font-size: 1.3rem;
+    .logo-image {
+        height: 40px;
     }
-     .menu-botones {
-         justify-content: space-around; /* Distribuir mejor en pantallas pequeñas */
-     }
-     .menu-botones button {
-         width: 45%; /* Hacer botones ocupar casi mitad */
-         margin-bottom: 10px; /* Espacio si se van a dos líneas */
-     }
-      .slide {
-        flex: 0 0 200px; /* Aún más pequeño */
-     }
-     .slider-imagenes {
-         width: calc(200px * 5);
-         animation-name: scroll-tiny;
-     }
-     @keyframes scroll-tiny {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-200px * 4)); }
-     }
+    .hero-title {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+    }
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+    }
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+    .carousel-img {
+        flex: 0 0 180px;
+        height: 150px;
+    }
+    .carousel-track {
+        width: calc(180px * 8);
+    }
+    @keyframes carouselScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-180px * 4)); }
+    }
+    .section-heading {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-lg);
+    }
+    .section-intro, .section-description {
+        font-size: 0.95rem;
+    }
+    .info-card {
+        padding: var(--spacing-sm);
+    }
+    .card-title {
+        font-size: 1.2rem;
+    }
+    .contact-item {
+        font-size: 1rem;
+    }
+    .contact-icon {
+        font-size: 1.2em;
+    }
 }

@@ -1,0 +1,35 @@
+/* Fondo general - Modo Oscuro (por defecto) */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Colores del degradado para modo oscuro (más profundos y vibrantes) */
+    background: linear-gradient(135deg, #02203F, #06394F, #0E6C7D, #1A92B3);
+    background-size: 400% 400%;
+    animation: backgroundFlowDark 25s ease infinite; /* Animación específica para modo oscuro */
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animación para Modo Oscuro */
+@keyframes backgroundFlowDark {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Fondo general - Modo Claro */
+body.light-mode {
+    /* Colores del degradado para modo claro (más suaves y brillantes) */
+    background: linear-gradient(135deg, #CCE3F2, #E0F2F7, #D0FFDF, #F0FFF0); /* Tonos pastel claros */
+    background-size: 400% 400%;
+    animation: backgroundFlowLight 25s ease infinite; /* Animación específica para modo claro */
+}
+
+/* Animación para Modo Claro */
+@keyframes backgroundFlowLight {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

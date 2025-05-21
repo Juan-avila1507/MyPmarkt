@@ -1,124 +1,229 @@
 <!DOCTYPE html>
-<html lang="es"> <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pockiet Markeet - Tu Comparador de Precios</title> <link rel="icon" type="image/jpg" href="logo pockiet markeet.jpg"> 
+    <title>Pockiet Markeet</title>
+    <link rel="icon" type="image/jpg" href="logo pockiet markeet.jpg"> 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="dividor-contenedor">
-            <div class="titulo-bloque">
-                <div class="logo-container">
-                    <img src="logo pockiet markeet.jpg" alt="Logo Pockiet Markeet"> </div>
-                <div class="titulo-con-estrellas">
-                    <i class="fas fa-star estrella"></i>
-                    <span class="titulo-texto">Pockiet Markeet</span>
-                    <i class="fas fa-star estrella"></i>
-                </div>
-            </div>
-            <nav class="menu-botones"> <button onclick="scrollToSection('inicio')">Inicio</button>
-                <button onclick="scrollToSection('informacion')">Información</button>
-                <button onclick="scrollToSection('aliados')">Aliados</button>
-                <button onclick="scrollToSection('contacto')">Contáctanos</button>
+    <link rel="stylesheet" href="fondo.css"> </head>
+<body class="light-mode"> <header class="site-header">
+        <div class="container header-inner">
+            <a href="#inicio" class="site-logo" aria-label="Volver a Inicio - Pockiet Markeet">
+                <img src="logo pockiet markeet.jpg" alt="Logo Pockiet Markeet" class="logo-image">
+                <span class="logo-text">Pockiet Markeet</span>
+            </a>
+            <nav class="main-nav" aria-label="Menú principal">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#informacion" class="nav-link">Información</a></li>
+                    <li><a href="#aliados" class="nav-link">Aliados</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
             </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar modo oscuro/claro">
+                <i class="fas fa-moon"></i> </button>
         </div>
     </header>
 
-    <main> <section id="inicio" class="fade-in">
-            <div class="cuadro-bienvenida">
-                <div class="texto1-cuadro-bienvenida">
-                    ¡Bienvenido a Pockiet Markeet! <i class="fas fa-shopping-cart"></i> </div>
-                <div class="texto2-cuadro-bienvenida">
-                    <p>Una herramienta pensada para ayudarte a tomar decisiones más inteligentes al momento de hacer tus compras. Ante el constante aumento en los precios de la canasta familiar en Colombia, desarrollamos una aplicación móvil que te permitirá comparar precios en diferentes supermercados y tiendas, todo desde la comodidad de tu celular.</p>
+    <main>
+        <section id="inicio" class="hero-section section-spacing fade-in" aria-labelledby="hero-heading">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 id="hero-heading" class="hero-title">¡Bienvenido a Pockiet Markeet!</h1>
+                    <p class="hero-subtitle">Tu aliado inteligente para optimizar tus compras y ahorrar en el hogar.</p>
+                    <p class="hero-description">Enfrenta el alza de precios con nuestra innovadora aplicación móvil. Compara y encuentra las mejores ofertas en supermercados y tiendas, directamente desde tu celular. Toma decisiones informadas y haz que tu dinero rinda más.</p>
+                    <a href="#informacion" class="btn btn-primary animate-hover">Descubre Cómo</a>
+                </div>
+                <div class="hero-image-carousel">
+                    <div class="carousel-track">
+                        <img src="Elegir.jpg" alt="Captura de pantalla: Elige productos fácilmente" class="carousel-img">
+                        <img src="precios.jpg" alt="Captura de pantalla: Compara precios actualizados" class="carousel-img">
+                        <img src="Super.jpg" alt="Captura de pantalla: Encuentra supermercados cercanos" class="carousel-img">
+                        <img src="l2.jpg" alt="Captura de pantalla: Ahorra en tus compras" class="carousel-img">
+                        <img src="Elegir.jpg" alt="Captura de pantalla: Elige productos fácilmente" class="carousel-img">
+                        <img src="precios.jpg" alt="Captura de pantalla: Compara precios actualizados" class="carousel-img">
+                        <img src="Super.jpg" alt="Captura de pantalla: Encuentra supermercados cercanos" class="carousel-img">
+                        <img src="l2.jpg" alt="Captura de pantalla: Ahorra en tus compras" class="carousel-img">
                     </div>
-            </div>
-
-            <div class="carrusel-container fade-in">
-                <div class="slider-wrapper">
-                    <div class="slider-imagenes">
-                        <div class="slide"><img src="Elegir.jpg" alt="Elige productos fácilmente"></div>
-                        <div class="slide"><img src="precios.jpg" alt="Compara precios actualizados"></div>
-                        <div class="slide"><img src="Super.jpg" alt="Encuentra supermercados cercanos"></div>
-                        <div class="slide"><img src="l2.jpg" alt="Ahorra en tus compras"></div>
-                        <div class="slide"><img src="Elegir.jpg" alt="Elige productos fácilmente"></div>
-                    </div>
                 </div>
-                 </div>
-        </section>
-
-        <section id="informacion" class="fade-in">
-             <h2>¿Cómo te Ayudamos?</h2>
-            <div class="cuadro-informativo">
-                <div class="info-item">
-                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-exclamation-circle icon-info"></i> El Problema</h3>
-                    <div class="texto2-cuadro-informativo"><p>En Colombia, llenar el mercado se ha vuelto cada vez más costoso. Muchas familias gastan hasta el 77% de su salario solo en alimentos. Y lo peor: no hay una forma sencilla de saber dónde están los mejores precios. La gente pierde tiempo y dinero recorriendo tiendas o confiando en publicidad que no siempre es real.</p></div>
-                     </div>
-                 <div class="info-item">
-                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-bullseye icon-info"></i> ¿Qué Buscamos?</h3>
-                    <div class="texto2-cuadro-informativo">
-                        <p>Crear una app que te muestre dónde comprar más barato, usando geolocalización, datos actualizados y una interfaz sencilla.</p>
-                        <p>Además queremos:</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle list-icon"></i> Saber quién usará la app, para ajustarla a sus necesidades.</li>
-                            <li><i class="fas fa-check-circle list-icon"></i> Diseñar algo bonito y fácil de usar.</li>
-                            <li><i class="fas fa-check-circle list-icon"></i> Darte alertas de descuentos y ayudarte a ahorrar tiempo.</li>
-                        </ul>
-                         </div>
-                </div>
-                 <div class="info-item">
-                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-lightbulb icon-info"></i> Nuestra Solución</h3>
-                    <div class="texto2-cuadro-informativo">
-                        <p>Una app que te permite:</p>
-                        <ul>
-                            <li><i class="fas fa-dollar-sign list-icon"></i> Ver precios de productos en varias tiendas.</li>
-                            <li><i class="fas fa-map-marker-alt list-icon"></i> Encontrar las mejores opciones cerca de ti.</li>
-                            <li><i class="fas fa-bell list-icon"></i> Recibir alertas de rebajas.</li>
-                            <li><i class="fas fa-comments list-icon"></i> Leer opiniones de otros compradores.</li>
-                            <li><i class="fas fa-route list-icon"></i> Ahorrar tiempo con rutas inteligentes.</li>
-                        </ul>
-                         </div>
-                 </div>
-                 <div class="info-item">
-                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-chart-line icon-info"></i> Lo que Lograremos</h3>
-                    <div class="texto2-cuadro-informativo">
-                        <p>Con esta app vas a poder tomar mejores decisiones al comprar. Ahorrarás tiempo, plata y apoyarás al comercio local. Además, los negocios competirán más por ofrecer buenos precios.</p>
-                         </div>
-                </div>
-                 <div class="info-item">
-                    <h3 class="texto1-cuadro-informativo"><i class="fas fa-users icon-info"></i> Sobre el Proyecto</h3>
-                    <div class="texto2-cuadro-informativo">
-                        <p>Este es un prototipo creado por estudiantes de Ingeniería de Sistemas que quieren usar la tecnología para resolver problemas reales. ¡Vamos con toda!</p>
-                         </div>
-                 </div>
             </div>
         </section>
 
-        <section id="aliados" class="fade-in">
-            <h2><i class="fas fa-handshake"></i> Nuestros Aliados</h2>
-            <p>Estamos construyendo relaciones con supermercados y tiendas locales para ofrecerte la mejor información.</p>
-            <p><strong>(Próximamente más información)</strong></p>
-            </section>
+        <section id="informacion" class="info-section section-spacing fade-in" aria-labelledby="info-section-title">
+            <div class="container">
+                <h2 id="info-section-title" class="section-heading">¿Cómo te Ayudamos?</h2>
+                <p class="section-intro">Pockiet Markeet nace de la necesidad de optimizar la economía familiar en un entorno de precios cambiantes. Aquí te detallamos nuestra propuesta:</p>
+                
+                <div class="info-grid">
+                    <article class="info-card">
+                        <div class="card-icon"><i class="fas fa-exclamation-circle" aria-hidden="true"></i></div>
+                        <h3 class="card-title">El Desafío Actual</h3>
+                        <div class="card-content">
+                            <p>En Colombia, el costo de la canasta familiar es una preocupación creciente. Muchas familias destinan un porcentaje significativo de sus ingresos a alimentos, y la falta de herramientas comparativas eficientes agrava el problema, resultando en tiempo y dinero mal invertidos.</p>
+                        </div>
+                    </article>
+                    <article class="info-card">
+                        <div class="card-icon"><i class="fas fa-bullseye" aria-hidden="true"></i></div>
+                        <h3 class="card-title">Nuestros Objetivos</h3>
+                        <div class="card-content">
+                            <p>Buscamos empoderar a los consumidores con una aplicación intuitiva que centralice la información de precios.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle feature-icon" aria-hidden="true"></i> Investigación profunda para atender necesidades reales.</li>
+                                <li><i class="fas fa-check-circle feature-icon" aria-hidden="true"></i> Diseño UX/UI centrado en la facilidad de uso.</li>
+                                <li><i class="fas fa-check-circle feature-icon" aria-hidden="true"></i> Notificaciones inteligentes para oportunidades de ahorro.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="info-card">
+                        <div class="card-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
+                        <h3 class="card-title">Nuestra Solución</h3>
+                        <div class="card-content">
+                            <p>Una plataforma completa para una experiencia de compra superior:</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-tags feature-icon" aria-hidden="true"></i> Comparación de precios en tiempo real.</li>
+                                <li><i class="fas fa-location-arrow feature-icon" aria-hidden="true"></i> Localización de las mejores ofertas cercanas.</li>
+                                <li><i class="fas fa-bell feature-icon" aria-hidden="true"></i> Alertas personalizadas sobre descuentos.</li>
+                                <li><i class="fas fa-comments feature-icon" aria-hidden="true"></i> Reseñas y calificaciones de la comunidad.</li>
+                                <li><i class="fas fa-road feature-icon" aria-hidden="true"></i> Optimización de rutas para compras.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="info-card">
+                        <div class="card-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <h3 class="card-title">Impacto Esperado</h3>
+                        <div class="card-content">
+                            <p>Con Pockiet Markeet, cada compra se convierte en una oportunidad de ahorro. Fomentamos el consumo inteligente, la eficiencia en el tiempo y el apoyo al comercio local, incentivando una competencia sana que beneficia directamente al consumidor.</p>
+                        </div>
+                    </article>
+                    <article class="info-card">
+                        <div class="card-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                        <h3 class="card-title">El Equipo Detrás</h3>
+                        <div class="card-content">
+                            <p>Este prototipo es el resultado del trabajo de estudiantes de Ingeniería de Sistemas, comprometidos con el desarrollo de soluciones tecnológicas que aborden desafíos sociales y económicos reales. Impulsados por la innovación y la pasión por el código.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-        <section id="contacto" class="fade-in">
-            <h2><i class="fas fa-envelope"></i> ¡Contáctanos!</h2>
-            <p>¿Te interesa el proyecto? ¿Tienes ideas, sugerencias o quieres colaborar? ¡Nos encantaría escucharte!</p>
-            <div class="contacto-links">
-                 <p><i class="fab fa-github icon-contacto"></i> <strong>GitHub:</strong> <a href="https://github.com/Juan-avila1507/MyPmarkt" target="_blank" rel="noopener noreferrer">Proyecto MyPmarkt</a></p>
-                 </div>
+        <section id="aliados" class="partners-section section-spacing fade-in" aria-labelledby="partners-heading">
+            <div class="container">
+                <h2 id="partners-heading" class="section-heading"><i class="fas fa-handshake" aria-hidden="true"></i> Nuestros Aliados Estratégicos</h2>
+                <p class="section-description">Estamos forjando alianzas con los principales supermercados y establecimientos locales para brindarte la información de precios más completa y actualizada.</p>
+                <div class="partners-placeholder">
+                    <p class="text-highlight"><strong>(Información de Aliados Próximamente)</strong></p>
+                    <div class="loading-spinner" aria-label="Cargando información de aliados"></div>
+                </div>
+            </div>
+        </section>
+        </section>
+
+        <section id="membresia" class="pricing-section section-spacing fade-in" aria-labelledby="pricing-heading">
+            <div class="container">
+                <h2 id="pricing-heading" class="section-heading"><i class="fas fa-ticket" aria-hidden="true"></i> Elige tu Plan de Membresía</h2>
+                <p class="section-description">Accede a funciones avanzadas y exclusivas para llevar tu ahorro al siguiente nivel. ¡Encuentra el plan perfecto para ti!</p>
+
+                <div class="pricing-grid">
+
+                    <div class="pricing-card free-plan">
+                        <h3 class="plan-title">Básico</h3>
+                        <div class="plan-price">
+                            <span class="currency">Gratis</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check-circle"></i> Alertas Personalizadas de Precios (limitado)</li>
+                            <li><i class="fas fa-check-circle"></i> Historial y Tendencias de Precios (básico)</li>
+                            <li><i class="fas fa-times-circle inactive-feature"></i> Recomendaciones Inteligentes</li>
+                            <li><i class="fas fa-check-circle"></i> Modo Ahorro Familiar (seguimiento de gastos)</li>
+                            <li><i class="fas fa-times-circle inactive-feature"></i> Consejos Personalizados para Ahorrar</li>
+                            <li><i class="fas fa-check-circle"></i> Escaneo de Productos (básico)</li>
+                            <li><i class="fas fa-times-circle inactive-feature"></i> Modo Sin Conexión (Offline)</li>
+                            <li><i class="fas fa-times-circle inactive-feature"></i> Cupones y Descuentos Exclusivos</li>
+                            <li><i class="fas fa-times-circle inactive-feature"></i> Exportación de Datos y Reportes</li>
+                        </ul>
+                        <a href="#" class="btn btn-secondary animate-hover">Comenzar Gratis</a>
+                        <p class="plan-note">Ideal para probar la aplicación y comparar precios.</p>
+                    </div>
+
+                    <div class="pricing-card monthly-plan featured-plan">
+                        <span class="popular-badge">Popular</span>
+                        <h3 class="plan-title">Premium Mensual</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span><span class="amount">9.99</span><span class="frequency">/mes</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check-circle"></i> <strong>Alertas Personalizadas de Precios</strong> (ilimitado)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Historial y Tendencias de Precios</strong> (completo)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Recomendaciones Inteligentes</strong></li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Modo Ahorro Familiar</strong> (presupuesto y consejos)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Consejos Personalizados para Ahorrar</strong></li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Escaneo de Productos</strong> (OCR y código de barras)</li>
+                            <li><i class="fas fa-check-circle"></i> Modo Sin Conexión (Offline)</li>
+                            <li><i class="fas fa-check-circle"></i> Cupones y Descuentos Exclusivos (seleccionados)</li>
+                            <li><i class="fas fa-times-circle inactive-feature"></i> Exportación de Datos y Reportes</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary animate-hover">Suscribirse Mensual</a>
+                        <p class="plan-note">Acceso completo a funciones avanzadas.</p>
+                    </div>
+
+                    <div class="pricing-card annual-plan">
+                        <h3 class="plan-title">Premium Anual</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span><span class="amount">99</span><span class="frequency">/año</span>
+                            <span class="save-indicator">Ahorra 16%</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check-circle"></i> <strong>Alertas Personalizadas de Precios</strong> (ilimitado)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Historial y Tendencias de Precios</strong> (completo)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Recomendaciones Inteligentes</strong></li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Modo Ahorro Familiar</strong> (presupuesto y consejos avanzados)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Consejos Personalizados para Ahorrar</strong> (premium)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Escaneo de Productos</strong> (OCR y código de barras)</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Modo Sin Conexión (Offline)</strong></li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Cupones y Descuentos Exclusivos</strong> (amplios)</li>
+                            <li><i class="fas fa-check-circle"></i> Exportación de Datos y Reportes</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary animate-hover">Suscribirse Anual</a>
+                        <p class="plan-note">El máximo ahorro y acceso a todas las funciones.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="aliados" class="partners-section section-spacing fade-in" aria-labelledby="partners-heading">
+
+        <section id="contacto" class="contact-section section-spacing fade-in" aria-labelledby="contact-heading">
+            <div class="container contact-content">
+                <h2 id="contact-heading" class="section-heading"><i class="fas fa-envelope" aria-hidden="true"></i> ¡Contáctanos!</h2>
+                <p class="section-description">¿Tienes preguntas, ideas para colaborar o simplemente quieres saludar? Estamos aquí para escucharte y construir juntos el futuro de Pockiet Markeet.</p>
+                <div class="contact-info">
+                    <p class="contact-item">
+                        <i class="fab fa-github contact-icon" aria-hidden="true"></i> 
+                        <strong>GitHub:</strong> <a href="https://github.com/Juan-avila1507/MyPmarkt" target="_blank" rel="noopener noreferrer" class="contact-link">Proyecto MyPmarkt</a>
+                    </p>
+                    </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Pockiet Markeet. Todos los derechos reservados.</p>
-        </footer>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="currentYear"></span> Pockiet Markeet. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Política de Privacidad</a>
+                <a href="#" class="footer-link">Términos de Servicio</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="scripts.js"></script>
 </body>
