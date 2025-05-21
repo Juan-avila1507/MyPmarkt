@@ -755,8 +755,7 @@ body.dark-mode .popular-badge {
         width: 95%; /* Un poco de margen */
         margin: 0 auto;
     }
-}
-/* Para tablets (vertical) y móviles grandes (máx. 768px) */
+}/* Para tablets (vertical) y móviles grandes (máx. 768px) */
 @media (max-width: 768px) {
     .container {
         padding: 0 var(--spacing-sm); /* Más padding lateral en contenedores */
@@ -870,41 +869,13 @@ body.dark-mode .popular-badge {
         font-size: 0.95rem;
     }
 
-    /* Carrusel en Hero - REVISIÓN CRÍTICA CON !important y ajustes */
+    /* Carrusel en Hero - OCULTADO EN MÓVIL */
     .hero-image-carousel {
-        padding: 0 !important; /* Fuerza a que no haya padding interno */
-        max-width: 100%; /* Asegura que el contenedor no exceda el ancho del viewport */
-        width: 95%; /* Pequeño margen lateral para estética, si el .container no tiene padding */
-        margin: 0 auto; /* Centra el carrusel */
-        box-shadow: var(--shadow-medium);
-        border-radius: var(--border-radius-md);
-        overflow: hidden !important; /* Esencial y forzado para que las imágenes se recorten */
-        position: relative; /* Necesario para que el track se posicione correctamente dentro */
-        box-sizing: border-box; /* Asegura que padding/border no sumen al ancho */
+        display: none !important; /* OCULTA EL CARRUSEL EN PANTALLAS DE HASTA 768px */
     }
-    .carousel-track {
-        display: flex !important; /* Asegura que sea un contenedor flex */
-        animation: carouselScrollMobile 40s linear infinite !important; /* Forzado y más lento */
-        width: 800% !important; /* Forzado y explícito si tienes 8 imágenes (4 únicas duplicadas) */
-        will-change: transform; /* Hint para el navegador, puede mejorar el rendimiento */
-        flex-wrap: nowrap !important; /* CRÍTICO: Evita que las imágenes se envuelvan */
-    }
-    .carousel-img {
-        flex: 0 0 100% !important; /* <--- CRÍTICO: Cada imagen ocupa el 100% de la "ventana" del carrusel */
-        width: 100% !important;    /* Asegura que la imagen llene su flex-basis */
-        height: 180px; /* Reducir altura de la imagen para móviles */
-        object-fit: cover !important; /* Recorta la imagen para que llene el espacio sin distorsión */
-        display: block !important; /* Evita pequeños espacios extra y problemas de inline */
-        border-radius: var(--border-radius-sm);
-        box-shadow: none !important; /* Eliminar sombra extra para un look más limpio en móvil */
-        margin: 0 !important; /* <--- CRÍTICO: No debe haber margen entre imágenes en móvil */
-    }
-    @keyframes carouselScrollMobile {
-        0% { transform: translateX(0); }
-        /* Esto desplazará 4 imágenes completas. Si tienes 8 imágenes en total (4 únicas duplicadas),
-           esto hará que el ciclo se repita suavemente al mostrar las 4 únicas. */
-        100% { transform: translateX(calc(-100% * 4)); }
-    }
+    /* Todas las reglas para .carousel-track, .carousel-img y @keyframes carouselScrollMobile
+       ya no son necesarias dentro de este media query ya que el carrusel está oculto.
+       Las hemos eliminado para mantener el código más limpio. */
 
     /* Tarjetas de Información y Membresía (info-grid) */
     .info-grid {
@@ -1013,7 +984,6 @@ body.dark-mode .popular-badge {
         height: 35px;
     }
     /* El .theme-toggle de este media query ya no es relevante si el botón está dentro del menú */
-    /* Dejarlo no causa conflicto, pero puedes borrarlo si quieres. */
     /* .theme-toggle {
         font-size: 1.2rem;
     } */
@@ -1023,9 +993,10 @@ body.dark-mode .popular-badge {
         font-size: 0.85rem;
     }
 
-    .carousel-img {
-        height: 160px; /* Imágenes aún más pequeñas en el carrusel */
-    }
+    /* El carrusel ya está oculto por el media query anterior, estas reglas ya no son necesarias */
+    /* .carousel-img {
+        height: 160px;
+    } */
 
     .card-icon {
         font-size: 2.2rem;
