@@ -130,7 +130,7 @@ a:hover {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-lg); 
 }
 
 .section-spacing {
@@ -635,31 +635,7 @@ body.dark-mode .popular-badge {
     margin-top: var(--spacing-xs);
 }
 
-/* --- Media Queries para la sección de membresía --- */
-@media (max-width: 992px) {
-    .plan-card.featured-plan-card {
-        transform: translateY(-10px) scale(1.02); /* Menos elevación en tablets */
-    }
-}
 
-@media (max-width: 768px) {
-    .info-grid {
-        gap: var(--spacing-md); /* Reducir el gap en móviles */
-    }
-    .plan-card.featured-plan-card {
-        transform: scale(1.0); /* Volver al tamaño normal en pantallas pequeñas */
-        border: 1px solid rgba(0, 0, 0, 0.05); /* Eliminar el borde de acento en móvil */
-    }
-    body.dark-mode .plan-card.featured-plan-card {
-        border-color: rgba(255, 255, 255, 0.08);
-    }
-    .plan-card .card-title {
-        font-size: 1.6rem;
-    }
-    .plan-price .amount {
-        font-size: 3rem;
-    }
-}
 /* --- Footer del Sitio --- */
 .site-footer {
     background-color: var(--footer-bg);
@@ -703,10 +679,273 @@ body.dark-mode .popular-badge {
     transform: translateY(0);
 }
 
-/* Media Query para el footer en pantallas grandes */
-@media (min-width: 768px) {
+/* --- Media Queries para Responsividad (ADAPTADO A TU CÓDIGO) --- */
+
+/* Para pantallas más pequeñas que 1024px (ej. laptops pequeñas, tablets en horizontal) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 var(--spacing-md); /* Reducir padding lateral en contenedores */
+    }
+
+    .section-spacing {
+        padding-top: var(--spacing-xl);
+        padding-bottom: var(--spacing-xl);
+        margin-bottom: var(--spacing-lg); /* Menos espacio entre secciones */
+    }
+
+    .site-header {
+        padding: var(--spacing-sm) 0; /* Menos padding en header */
+    }
+
+    .main-nav .nav-list {
+        gap: var(--spacing-md); /* Reducir espacio entre enlaces de navegación */
+    }
+
+    /* Hero Section */
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4rem); /* Ajuste de tamaño de título en hero */
+    }
+    .hero-subtitle {
+        font-size: clamp(1.2rem, 2.5vw, 1.6rem); /* Ajuste de subtítulo */
+    }
+    .hero-description {
+        font-size: 1rem; /* Texto más pequeño */
+    }
+    .hero-content {
+        flex-direction: column; /* Apilar contenido en hero */
+        text-align: center;
+    }
+    .hero-text {
+        padding-right: 0; /* Eliminar padding derecho */
+        margin-bottom: var(--spacing-lg);
+    }
+    .hero-image-carousel {
+        max-width: 100%; /* Ajustar ancho máximo del carrusel */
+        width: 95%; /* Un poco de margen */
+        margin: 0 auto;
+    }
+}
+
+
+/* Para tablets (vertical) y móviles grandes (máx. 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-sm); /* Más padding lateral en contenedores */
+    }
+
+    /* Ajustes de tipografía para pantallas más pequeñas */
+    h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
+    h2 { font-size: clamp(1.8rem, 6vw, 2.8rem); }
+    h3 { font-size: clamp(1.4rem, 5vw, 2rem); }
+
+    .section-heading {
+        margin-bottom: var(--spacing-lg);
+    }
+    .section-intro, .section-description {
+        font-size: 0.95rem; /* Un poco más pequeña */
+        margin-bottom: var(--spacing-md);
+    }
+    .text-highlight {
+        font-size: 1.05rem;
+    }
+
+    /* Header y Navegación */
+    .header-inner {
+        flex-direction: column; /* Apilar logo, nav y toggle */
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    .site-logo {
+        font-size: 1.6rem;
+    }
+    .logo-image {
+        height: 45px;
+    }
+    .main-nav .nav-list {
+        flex-direction: column; /* Apilar enlaces de navegación */
+        gap: var(--spacing-xs); /* Menos espacio entre ellos */
+        text-align: center;
+        margin-top: var(--spacing-sm);
+    }
+    .nav-link {
+        padding: var(--spacing-xs) 0;
+        font-size: 1rem;
+    }
+    .theme-toggle {
+        font-size: 1.4rem;
+    }
+
+    /* Botones */
+    .btn {
+        padding: var(--spacing-xs) var(--spacing-sm); /* Ajustar padding del botón */
+        font-size: 0.95rem;
+    }
+
+    /* Carrusel en Hero */
+    .carousel-track {
+        animation: carouselScrollMobile 20s linear infinite; /* Animación más rápida para móvil */
+        width: calc(100% * 8); /* Ajustar ancho para un solo elemento visible */
+    }
+    .carousel-img {
+        flex: 0 0 100%; /* Una imagen por vista en móvil */
+        height: 200px; /* Reducir altura de la imagen */
+        margin: 0; /* Eliminar margen entre imágenes en móvil */
+        box-shadow: none; /* Eliminar sombra extra */
+    }
+    @keyframes carouselScrollMobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-100% * 4)); } /* Desplaza 4 imágenes completas */
+    }
+
+    /* Tarjetas de Información y Membresía (info-grid) */
+    .info-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+        gap: var(--spacing-md); /* Reducir el gap */
+        margin-top: var(--spacing-md);
+    }
+    .info-card {
+        padding: var(--spacing-md); /* Menos padding en las tarjetas */
+    }
+    /* Desactivar transformaciones de hover para pantallas táctiles */
+    .info-card:hover {
+        transform: translateY(0); /* Eliminar animación de elevación en hover */
+        box-shadow: var(--shadow-medium); /* Mantener sombra base */
+    }
+    /* Ajustes específicos para el plan destacado */
+    .plan-card.featured-plan-card {
+        transform: translateY(0); /* Eliminar elevación del destacado */
+        border: 1px solid rgba(0, 0, 0, 0.05); /* Volver al borde sutil */
+        box-shadow: var(--shadow-medium); /* Sombra estándar */
+    }
+    body.dark-mode .plan-card.featured-plan-card {
+        border-color: rgba(255, 255, 255, 0.08); /* Borde sutil en modo oscuro */
+    }
+
+    /* Contenido de las tarjetas (iconos, títulos, precios, listas) */
+    .card-icon {
+        font-size: 2.8rem;
+    }
+    .card-title {
+        font-size: 1.5rem;
+    }
+    .card-content p {
+        font-size: 0.95rem;
+    }
+    .feature-list li {
+        font-size: 0.9rem;
+    }
+    .plan-price .amount {
+        font-size: 3rem;
+    }
+    .plan-price .currency {
+        font-size: 1.3rem;
+    }
+    .plan-price .frequency {
+        font-size: 0.9rem;
+    }
+    .plan-note {
+        font-size: 0.8rem;
+    }
+    .popular-badge {
+        font-size: 0.75rem;
+        padding: var(--spacing-xxs) var(--spacing-sm);
+        top: var(--spacing-sm); /* Ajustar posición en móvil */
+    }
+    .save-indicator {
+        font-size: 0.8rem;
+    }
+
+    /* Footer */
     .footer-inner {
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column; /* Apilar elementos del footer */
+        gap: var(--spacing-sm);
+    }
+    .footer-links {
+        flex-direction: column; /* Apilar enlaces del footer */
+        gap: var(--spacing-xs);
+    }
+    .footer-link {
+        font-size: 0.85rem;
+    }
+    .site-footer p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Para móviles pequeños (máx. 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-xs); /* Reducir aún más el padding lateral */
+    }
+
+    .section-spacing {
+        padding-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+    }
+
+    h1 { font-size: clamp(1.8rem, 9vw, 2.8rem); }
+    h2 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+    h3 { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+
+    .hero-title {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+    .hero-subtitle {
+        font-size: clamp(1rem, 3vw, 1.4rem);
+    }
+    .hero-description {
+        font-size: 0.85rem;
+    }
+
+    .site-logo {
+        font-size: 1.4rem;
+    }
+    .logo-image {
+        height: 35px;
+    }
+    .theme-toggle {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: var(--spacing-xxs) var(--spacing-sm); /* Botones más pequeños */
+        font-size: 0.85rem;
+    }
+
+    .carousel-img {
+        height: 160px; /* Imágenes aún más pequeñas en el carrusel */
+    }
+
+    .card-icon {
+        font-size: 2.2rem;
+    }
+    .card-title {
+        font-size: 1.3rem;
+    }
+    .card-content p {
+        font-size: 0.85rem;
+    }
+
+    .plan-price .amount {
+        font-size: 2.2rem;
+    }
+    .plan-price .currency {
+        font-size: 1rem;
+    }
+    .plan-price .frequency {
+        font-size: 0.8rem;
+    }
+
+    .popular-badge {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+    }
+
+    .save-indicator {
+        font-size: 0.7rem;
+    }
+
+    .footer-link, .site-footer p {
+        font-size: 0.8rem;
     }
 }
